@@ -19,12 +19,16 @@
     // Do any additional setup after loading the view.
     
     
+    
+    [HHPopupView alertWithTitle:@"提示" detail:@"呵呵呵呵" contentArr:@[@"确定"] selectComplete:^(NSInteger index) {
+        
+    }];
+   
     [(BaseTabBarController* )self.tabBarController setBadgeValue:@"12" index:0];
     
     
     
     NSString   *login_inApkContext=@"/ipay/f6ajax/com.zteict.xinlebao.business.base.BusinessCenter4ApkUser.login_inApkContext";
-    
     
     NSMutableDictionary *parameters=[[NSMutableDictionary alloc] init];
     
@@ -32,13 +36,20 @@
     [parameters setValue:@"123456" forKey:@"password"];
     
     
-    [self.requestManager postRequestWithUrl:login_inApkContext params:parameters success:^(id  _Nullable responseObject) {
+    [self.requestManager postRequestWithUrl:login_inApkContext params:parameters success:^(id response, NSInteger resposeCode) {
         
-        NSLog(@"哈哈");
-    } failure:^(NSError * _Nonnull error) {
         
-        NSLog(@"======%@",error);
+        
+        
+         NSLog(@"哈哈===%ld",resposeCode);
+        
+    } failure:^(NSError *error, NSString *errorMsg) {
+        
+         NSLog(@"======%@",errorMsg);
+        
+        [self showCenterTip:errorMsg];
     }];
+    
     
     
 }

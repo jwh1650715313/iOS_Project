@@ -15,7 +15,7 @@
 #define kNotifyHUDProgressHide       @"kNotifyHUDProgressHide"//隐藏loading的通知
 
 
-
+typedef void(^IndexBlock)(NSInteger index);
 
 
 

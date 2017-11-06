@@ -23,10 +23,13 @@
 //获取View的Height
 #define KViewHeight       self.view.height
 
-
+// 快捷创建
+#define KEY_WINDOW       [[UIApplication sharedApplication] keyWindow]
+// 常用高度
+#define NAVIGATION_HEIGHT   64
 
 // 主页面 Tab 高度
-#define kTabBarHeight 49
+#define kTabBarHeight  self.tabBarController.tabBar.height
 
 #pragma mark - Color
 // 从16进制得到颜色值 0x222222

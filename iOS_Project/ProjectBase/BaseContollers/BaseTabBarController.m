@@ -18,7 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setSVProgressHUD];
     [self removeTabarTopLine];
     [self setViewControllers];
     
@@ -38,13 +37,6 @@
 
 }
 
-- (void)setSVProgressHUD {
-    //SVProgressHUDMaskType 设置显示的样式
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom]; //样式使用自定义
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];// 整个后面的背景选择
-    [SVProgressHUD setBackgroundColor:[UIColor blackColor]];// 弹出框颜色
-    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];// 弹出框内容颜色
-}
 
 - (void)setViewControllers {
     //UITabBarController 数据源
@@ -94,7 +86,8 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    [SVProgressHUD dismiss];
+   
+    
 }
 
 #pragma 设置小红点数值

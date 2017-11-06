@@ -381,9 +381,10 @@
     if (!_progressHUD) {
         _progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
     }
-    _progressHUD.labelText = @"加载中...";
+    _progressHUD.label.text = @"加载中...";
     [self.view addSubview:_progressHUD];
-    [_progressHUD show:YES];
+    [_progressHUD showAnimated:YES];
+    [_progressHUD hideAnimated:YES afterDelay:10];
 
 }
 
@@ -394,10 +395,11 @@
         _progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
         
     }
-    _progressHUD.labelText = (text == nil || [@"" isEqualToString:text]) ? @"加载中..." : text;
+   
+    _progressHUD.label.text = (text == nil || [@"" isEqualToString:text]) ? @"加载中..." : text;
     [self.view addSubview:_progressHUD];
-    [_progressHUD show:YES];
-    [_progressHUD hide:YES afterDelay:5];
+    [_progressHUD showAnimated:YES];
+    [_progressHUD hideAnimated:YES afterDelay:10];
     
     
 }
@@ -407,14 +409,14 @@
         _progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
     }
     
-    _progressHUD.labelText = (text == nil || [@"" isEqualToString:text]) ? @"加载中..." : text;
+    _progressHUD.label.text = (text == nil || [@"" isEqualToString:text]) ? @"加载中..." : text;
     [self.view addSubview:_progressHUD];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showProgress)];
     [_progressHUD addGestureRecognizer:tap];
     
-    [_progressHUD show:YES];
+    [_progressHUD showAnimated:YES];
     if (exit) {
-        [_progressHUD hide:YES afterDelay:5];
+        [_progressHUD hideAnimated:YES afterDelay:5];
     }
 }
 
@@ -429,7 +431,7 @@
     
     NSLog(@"hideProgress");
     if (_progressHUD) {
-        [_progressHUD hide:YES];
+        [_progressHUD hideAnimated:YES];
         [_progressHUD removeFromSuperview];
     }
     
@@ -442,7 +444,9 @@
 - (void)showCenterTip:(NSString *)tip
 {
     if (self.bShowTip) {
-        [Toast showWithText:tip duration:2];
+       
+        [MBProgressHUD showMsg:tip];
+
     }
 }
 
@@ -451,7 +455,7 @@
 - (void)showBottomTip:(NSString *)tip
 {
     if (self.bShowTip) {
-        [Toast showWithText:tip bottomOffset:80 duration:2];
+        [MBProgressHUD showMsg:tip];
     }
 }
 

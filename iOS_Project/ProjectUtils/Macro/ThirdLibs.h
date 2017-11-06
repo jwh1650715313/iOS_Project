@@ -19,37 +19,42 @@
 //第三方框架（从Github下载的）
 
 #import "UIImageView+WebCache.h"
-#import "NSData+AES.h"
-#import "MD5.h"
 #import "MJExtension.h"
 #import "MJRefresh.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD.h"
 #import "IQKeyboardManager.h"
 #import "AESCipher.h"
-#import "Toast.h"
-#import "SVProgressHUD.h"
 #import "Masonry.h"
-//自定义的一些工具类,类别
-#import "NSUserDefaultTools.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+
+//类别
 #import "UIView+LayoutHelper.h"
-#import "ViewPager.h"
+#import "NSData+AES.h"
 #import "UIView+LayoutHelper.h"
 #import "UIView+Additions.h"
 #import "UIImage+Rotate.h"
 #import "NSObject+Json.h"
 #import "NSString+Json.h"
-#import "NSUserDefaultTools.h"
-#import "Date.h"
-#import "ImageUtil.h"
 #import "NSMutableDictionary+JSON.h"
-#import "CommonUtils.h"
 #import "UIImage+Extension.h"
 #import "NSString+Extension.h"
+#import "MBProgressHUD+Ex.h"
+#import  "UITabBar+Badge.h"
+
+//自定义的一些工具类
 #import "HttpRequstManager.h"
+#import "HHPopupView.h"
+#import "NSUserDefaultTools.h"
+#import "MD5.h"
+#import "ViewPager.h"
+#import "Date.h"
+#import "ImageUtil.h"
+#import "CommonUtils.h"
+#import "HHPopupView.h"
 
 //各种基类
-#import  "UITabBar+Badge.h"
+
 #import  "BaseTabBarController.h"
 #import  "BaseNavigationController.h"
 #import  "BaseViewController.h"

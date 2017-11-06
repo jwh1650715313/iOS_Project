@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+//    [self showProgress];
+    
+    [self showCenterTip:@"啊哈哈哈哈"];
+
 }
 
 - (void)didReceiveMemoryWarning {
