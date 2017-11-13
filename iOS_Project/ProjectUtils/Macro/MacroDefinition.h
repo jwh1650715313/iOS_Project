@@ -38,7 +38,7 @@
 
 
 //UI颜色控制
-#define kUIToneBackgroundColor kCyColorFromHex(0x00bd8c) //UI整体背景色调 与文字颜色一一对应
+#define kUIToneBackgroundColor [UIColor redColor]  //UI整体背景色调 与文字颜色一一对应
 #define kUIToneTextColor kCyColorFromHex(0xffffff) //UI整体文字色调 与背景颜色对应
 #define kStatusBarStyle UIStatusBarStyleLightContent //状态栏样式
 #define kViewBackgroundColor kCyColorFromHex(0xf5f5f5) //界面View背景颜色

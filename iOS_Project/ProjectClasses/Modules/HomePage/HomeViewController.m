@@ -21,6 +21,10 @@
 //    [self showProgress];
     
     [self showCenterTip:@"啊哈哈哈哈"];
+    
+    
+    
+    [self performSelector:@selector(hehe) withObject:nil afterDelay:10];
 
 }
 

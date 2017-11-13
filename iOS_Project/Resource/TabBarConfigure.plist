@@ -8,9 +8,9 @@
 		<key>title</key>
 		<string>首页</string>
 		<key>image</key>
-		<string>button_home</string>
+		<string>home</string>
 		<key>selectedImage</key>
-		<string>button_home1</string>
+		<string>home-h</string>
 		<key>badgeValue</key>
 		<string>0</string>
 	</dict>
@@ -18,11 +18,11 @@
 		<key>class</key>
 		<string>MyViewController</string>
 		<key>title</key>
-		<string>我</string>
+		<string>我的</string>
 		<key>image</key>
-		<string>home_me1</string>
+		<string>personal</string>
 		<key>selectedImage</key>
-		<string>home_me2</string>
+		<string>personal-h</string>
 		<key>badgeValue</key>
 		<string>0</string>
 	</dict>

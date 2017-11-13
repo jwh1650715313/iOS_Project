@@ -24,7 +24,7 @@ typedef void(^IndexBlock)(NSInteger index);
 
 //各种ID
 
-#define BUGLY_APP_ID  @"5eb0c53366"//腾讯的bugly，AppId
+#define BUGLY_APP_ID  @"b6ba27111c"//腾讯的bugly，AppId
 
 
 

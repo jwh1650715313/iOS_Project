@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self removeTabarTopLine];
+//    [self removeTabarTopLine];
     [self setViewControllers];
     
     self.view.backgroundColor=WhiteColor;
@@ -33,7 +33,7 @@
     tabFrame.size.height = height;
     tabFrame.origin.y = self.view.frame.size.height - height;
     self.tabBar.frame = tabFrame;
-    self.tabBar.backgroundColor=[UIColor lightGrayColor];
+//    self.tabBar.backgroundColor=[UIColor lightGrayColor];
 
 }
 
