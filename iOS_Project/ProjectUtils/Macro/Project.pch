@@ -16,6 +16,6 @@
 #import  "ConfigDefinition.h"
 #import  "HttpConfig.h"
 #import  "ThirdLibs.h"
-
+#import  "JinnLockConfig.h"
 
 #endif /* Project_pch */

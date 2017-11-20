@@ -20,8 +20,24 @@
 
 #define kScreen_Frame       (CGRectMake(0, 0 ,ScreenWidth,ScreenHeight))
 
-//获取View的Height
-#define KViewHeight       self.view.height
+//比例
+#define SCALE_HEIGHT(height)     (height * (KScreenHeight / 667.0))
+#define SCALE_WIDTH(width)       (width * (KScreenWidth / 375.0))
+
+
+//手机版本
+
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define SCREEN_MAX_LENGTH (MAX(KScreenWidth, KScreenHeight))
+#define SCREEN_MIN_LENGTH (MIN(KScreenWidth, KScreenHeight))
+
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH <= 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
+
 
 // 快捷创建
 #define KEY_WINDOW       [[UIApplication sharedApplication] keyWindow]
@@ -38,7 +54,7 @@
 
 
 //UI颜色控制
-#define kUIToneBackgroundColor [UIColor redColor]  //UI整体背景色调 与文字颜色一一对应
+#define kUIToneBackgroundColor  [UIColor redColor] //UI整体背景色调 与文字颜色一一对应
 #define kUIToneTextColor kCyColorFromHex(0xffffff) //UI整体文字色调 与背景颜色对应
 #define kStatusBarStyle UIStatusBarStyleLightContent //状态栏样式
 #define kViewBackgroundColor kCyColorFromHex(0xf5f5f5) //界面View背景颜色
@@ -48,6 +64,7 @@
 #define COLOR_RGB(R, G, B) [UIColor colorWithRed:(R/255.0f) green:(G/255.0f) blue:(B/255.0f) alpha:1]
 #define COLOR_N(INT) [UIColor colorWithRed:(INT/255.0f) green:(INT/255.0f) blue:(INT/255.0f) alpha:1]
 #define COLOR_F(Float) [UIColor colorWithRed:(Float) green:(Float) blue:(Float) alpha:1]
+
 
 #define ClearColor [UIColor clearColor]              //透明色
 #define WhiteColor [UIColor whiteColor]              //白色
@@ -60,6 +77,10 @@
 #define TextColor [UIColor colorWithRed:(32/255.0f) green:(32/255.0f) blue:(32/255.0f) alpha:1]   //字体颜色
 
 
+// 常用字体
+#define NavFont Font(17)
+#define Font(size) [UIFont systemFontOfSize:size]
+#define Font_Bold(size) [UIFont boldSystemFontOfSize:size]
 
 
 
@@ -88,7 +109,8 @@
 
 
 
-
-
+//iOS系统版本
+#define iOS(versionAbove)    [[[UIDevice currentDevice] systemVersion] floatValue] >= versionAbove
+#define iOSBefore(version)   [[[UIDevice currentDevice] systemVersion] floatValue] < version
 
 #endif /* MacroDefinition_h */

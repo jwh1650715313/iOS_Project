@@ -33,7 +33,7 @@
     tabFrame.size.height = height;
     tabFrame.origin.y = self.view.frame.size.height - height;
     self.tabBar.frame = tabFrame;
-//    self.tabBar.backgroundColor=[UIColor lightGrayColor];
+    self.tabBar.backgroundColor=WhiteColor;
 
 }
 
@@ -53,12 +53,6 @@
         
         [self addChildViewController:[self ittemChildViewController:classs title:title imageName:imageName selectedImage:selectedImage badgeValue:badgeValue]];
     }
-    
-    
-    
-    
-  
-    
    
 }
 

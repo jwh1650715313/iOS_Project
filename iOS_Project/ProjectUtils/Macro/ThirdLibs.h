@@ -41,7 +41,10 @@
 #import "NSString+Extension.h"
 #import "MBProgressHUD+Ex.h"
 #import  "UITabBar+Badge.h"
-
+#import "UITableView+Ex.h"
+#import "UIColor+Ex.h"
+#import "UIImage+Ex.h"
+#import "UIButton+Ex.h"
 //自定义的一些工具类
 #import "HttpRequstManager.h"
 #import "HHPopupView.h"
@@ -52,6 +55,7 @@
 #import "ImageUtil.h"
 #import "CommonUtils.h"
 #import "HHPopupView.h"
+#import "PageSurveyView.h"
 
 //各种基类
 

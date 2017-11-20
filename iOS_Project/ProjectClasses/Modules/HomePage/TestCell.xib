@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TestCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHP-AE-UCy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XO8-Zb-W50">
+                                <rect key="frame" x="0.0" y="10" width="320" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="GOr-p6-18X"/>
+                                    <constraint firstAttribute="height" constant="70" id="gHf-2G-jSO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.7843137255" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="XO8-Zb-W50" firstAttribute="leading" secondItem="eHP-AE-UCy" secondAttribute="leading" id="EvU-Bu-kkA"/>
+                            <constraint firstItem="XO8-Zb-W50" firstAttribute="top" secondItem="eHP-AE-UCy" secondAttribute="top" constant="10" id="HKA-Eo-Nym"/>
+                            <constraint firstAttribute="trailing" secondItem="XO8-Zb-W50" secondAttribute="trailing" id="PHO-Y0-TY4"/>
+                            <constraint firstAttribute="width" constant="320" id="cVJ-8w-fYv"/>
+                            <constraint firstAttribute="height" constant="80" id="q31-Rz-PY8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="eHP-AE-UCy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="toU-Z7-TKS"/>
+                    <constraint firstItem="eHP-AE-UCy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vR7-vr-Yto"/>
+                    <constraint firstAttribute="trailing" secondItem="eHP-AE-UCy" secondAttribute="trailing" id="w5b-aY-zHJ"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+</document>

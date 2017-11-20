@@ -20,11 +20,11 @@
     
     
     
-    [HHPopupView alertWithTitle:@"提示" detail:@"呵呵呵呵" contentArr:@[@"确定"] selectComplete:^(NSInteger index) {
-        
-    }];
+//    [HHPopupView alertWithTitle:@"提示" detail:@"呵呵呵呵" contentArr:@[@"确定"] selectComplete:^(NSInteger index) {
+//
+//    }];
    
-    [(BaseTabBarController* )self.tabBarController setBadgeValue:@"12" index:0];
+//    [(BaseTabBarController* )self.tabBarController setBadgeValue:@"12" index:0];
     
     
     
@@ -35,11 +35,7 @@
     [parameters setValue:@"caidewu" forKey:@"userName"];
     [parameters setValue:@"123456" forKey:@"password"];
     
-    
     [self.requestManager postRequestWithUrl:login_inApkContext params:parameters success:^(id response, NSInteger resposeCode) {
-        
-        
-        
         
          NSLog(@"哈哈===%ld",resposeCode);
         

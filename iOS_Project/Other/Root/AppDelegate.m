@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "SetViewController.h"
+
+#import "JinnLockViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -19,9 +21,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
-    
     [self initView];
+    
+   
     
     
     [self initBugly];
@@ -61,18 +63,37 @@
     self.window.rootViewController = SetVc;
     
     [self.window makeKeyAndVisible];
+    
+//    [self verify];
 }
 
 
 
 
 #pragma mark-初始化Bugly
--(void)initBugly
-{
-    [Bugly startWithAppId:BUGLY_APP_ID];
+static NSString * extracted() {
+    return BUGLY_APP_ID;
 }
 
+#pragma mark-Bugly
+-(void)initBugly
+{
+    [Bugly startWithAppId:extracted()];
+}
 
+#pragma mark-需要手势解锁
+- (void)verify
+{
+
+        NSLog(@"=====%ld",[JinnLockTool isGestureUnlockEnabled]);
+    
+
+        JinnLockViewController *lockViewController = [[JinnLockViewController alloc] initWithDelegate:nil
+                                                                                                 type:JinnLockTypeVerify
+                                                                                           appearMode:JinnLockAppearModePresent];
+        [self.window setRootViewController:lockViewController];
+    
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
