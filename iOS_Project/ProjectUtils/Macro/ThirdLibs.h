@@ -45,6 +45,8 @@
 #import "UIColor+Ex.h"
 #import "UIImage+Ex.h"
 #import "UIButton+Ex.h"
+#import "HHTool.h"
+
 //自定义的一些工具类
 #import "HttpRequstManager.h"
 #import "HHPopupView.h"
@@ -62,7 +64,7 @@
 #import  "BaseTabBarController.h"
 #import  "BaseNavigationController.h"
 #import  "BaseViewController.h"
-
+#import "BaseViewController+XHPhoto.h"
 //入口
 #import  "AppDelegate.h"
 

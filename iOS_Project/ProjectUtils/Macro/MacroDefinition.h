@@ -113,4 +113,11 @@
 #define iOS(versionAbove)    [[[UIDevice currentDevice] systemVersion] floatValue] >= versionAbove
 #define iOSBefore(version)   [[[UIDevice currentDevice] systemVersion] floatValue] < version
 
+
+
+// 非空判断
+#define kEnsureNotNil(str) [HHTool ensureNotNiL:str]
+
+
+
 #endif /* MacroDefinition_h */

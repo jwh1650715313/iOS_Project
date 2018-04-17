@@ -210,5 +210,27 @@
 
 
 
+- (void)logoutForTokenExpired
+{
+    [HHPopupView  alertWithTitle:@"登录信息过期" detail:@"请重新登录？" contentArr:@[@"登录"] selectComplete:^(NSInteger index) {
+        
+        
+        if (index==0) {
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+            
+            [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+            
+            //写退出登录的逻辑
+            
+            
+            
+            KPostNotification(KNotificationLoginStateChange, @NO);
+        }
+        
+        
+        
+    }];
+}
+
 
 @end

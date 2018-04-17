@@ -29,8 +29,64 @@
     [self initBugly];
     
     
+    [self initNotification];
+    
+    
     return YES;
 }
+
+
+-(void)initNotification
+{
+    //注册登录状态监听
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loginStateChange:)
+                                                 name:KNotificationLoginStateChange
+                                               object:nil];
+}
+
+
+#pragma mark ————— 登录状态处理 —————
+- (void)loginStateChange:(NSNotification *)notification
+{
+    BOOL loginSuccess = [notification.object boolValue];
+    
+    if (loginSuccess) {//登陆成功加载主窗口控制器
+        
+        //为避免自动登录成功刷新tabbar
+        if (!self.baseTabBar || ![self.window.rootViewController isKindOfClass:[BaseTabBarController class]]) {
+            self.baseTabBar = [BaseTabBarController new];
+            
+            CATransition *anima = [CATransition animation];
+            anima.type = @"cube";//设置动画的类型
+            anima.subtype = kCATransitionFromRight; //设置动画的方向
+            anima.duration = 0.3f;
+            
+            self.window.rootViewController = self.baseTabBar;
+            
+            [kAppWindow.layer addAnimation:anima forKey:@"revealAnimation"];
+            
+        }
+        
+    }else {//登陆失败加载登陆页面控制器
+        
+        self.baseTabBar = nil;
+        
+//        HHLoginViewController  *loginVc=[HHLoginViewController new];
+        
+        CATransition *anima = [CATransition animation];
+        anima.type = @"fade";//设置动画的类型
+        anima.subtype = kCATransitionFromRight; //设置动画的方向
+        anima.duration = 0.3f;
+        
+//        self.window.rootViewController = loginVc;
+        
+        [kAppWindow.layer addAnimation:anima forKey:@"revealAnimation"];
+        
+    }
+    
+}
+
 
 
 

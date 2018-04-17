@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4A0BCA17E91BF7CF7DE42578 /* libPods-iOS_Project.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8971C429C0733904364B6854 /* libPods-iOS_Project.a */; };
+		895B114D2085906600B30D5A /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895B114C2085906600B30D5A /* BaseWebViewController.m */; };
+		895B11532085909B00B30D5A /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 895B11502085909B00B30D5A /* NJKWebViewProgress.m */; };
+		895B11542085909B00B30D5A /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 895B11522085909B00B30D5A /* NJKWebViewProgressView.m */; };
+		895B1157208591EC00B30D5A /* HHTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 895B1156208591EC00B30D5A /* HHTool.m */; };
+		895B115A208593C800B30D5A /* BaseViewController+XHPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 895B1159208593C800B30D5A /* BaseViewController+XHPhoto.m */; };
 		F0066E8C1FAC89520094D8B2 /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0066E8A1FAC89520094D8B2 /* SetViewController.m */; };
 		F0066E8D1FAC89520094D8B2 /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0066E8B1FAC89520094D8B2 /* SetViewController.xib */; };
 		F046835E1FAC7A96000A6114 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F046835D1FAC7A95000A6114 /* UIKit.framework */; };
@@ -94,6 +99,16 @@
 /* Begin PBXFileReference section */
 		0D30EB8CD65C13AE2EECCA8F /* Pods-iOS_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Project/Pods-iOS_Project.debug.xcconfig"; sourceTree = "<group>"; };
 		6B0D0C2BEF544ADF38FEEA12 /* Pods-iOS_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Project.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Project/Pods-iOS_Project.release.xcconfig"; sourceTree = "<group>"; };
+		895B114B2085906600B30D5A /* BaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWebViewController.h; sourceTree = "<group>"; };
+		895B114C2085906600B30D5A /* BaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWebViewController.m; sourceTree = "<group>"; };
+		895B114F2085909B00B30D5A /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		895B11502085909B00B30D5A /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		895B11512085909B00B30D5A /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		895B11522085909B00B30D5A /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		895B1155208591EC00B30D5A /* HHTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHTool.h; sourceTree = "<group>"; };
+		895B1156208591EC00B30D5A /* HHTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHTool.m; sourceTree = "<group>"; };
+		895B1158208593C800B30D5A /* BaseViewController+XHPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseViewController+XHPhoto.h"; sourceTree = "<group>"; };
+		895B1159208593C800B30D5A /* BaseViewController+XHPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseViewController+XHPhoto.m"; sourceTree = "<group>"; };
 		8971C429C0733904364B6854 /* libPods-iOS_Project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS_Project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0066E891FAC89520094D8B2 /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		F0066E8A1FAC89520094D8B2 /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
@@ -254,6 +269,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		895B114E2085909B00B30D5A /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				895B114F2085909B00B30D5A /* NJKWebViewProgress.h */,
+				895B11502085909B00B30D5A /* NJKWebViewProgress.m */,
+				895B11512085909B00B30D5A /* NJKWebViewProgressView.h */,
+				895B11522085909B00B30D5A /* NJKWebViewProgressView.m */,
+			);
+			path = NJKWebViewProgress;
+			sourceTree = "<group>";
+		};
 		A595B299060F06FB455D6565 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +499,10 @@
 				F0E5BECA1FC2C49F00C07EF0 /* UIImage+Ex.m */,
 				F0E5BED01FC2CC4A00C07EF0 /* UIButton+Ex.h */,
 				F0E5BECF1FC2CC4900C07EF0 /* UIButton+Ex.m */,
+				895B1155208591EC00B30D5A /* HHTool.h */,
+				895B1156208591EC00B30D5A /* HHTool.m */,
+				895B1158208593C800B30D5A /* BaseViewController+XHPhoto.h */,
+				895B1159208593C800B30D5A /* BaseViewController+XHPhoto.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -539,6 +569,7 @@
 		F0FDAA551FAC802D0023F8EA /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				895B114E2085909B00B30D5A /* NJKWebViewProgress */,
 				F0A3E1791FB06A1800DD2E90 /* MMDateView */,
 				F0A3E1561FB0387200DD2E90 /* Md5 */,
 				F0FDAA561FAC802D0023F8EA /* AES */,
@@ -607,6 +638,10 @@
 		F0FDAB411FAC802D0023F8EA /* BaseContollers */ = {
 			isa = PBXGroup;
 			children = (
+				895B114B2085906600B30D5A /* BaseWebViewController.h */,
+				895B114C2085906600B30D5A /* BaseWebViewController.m */,
+				F0FDAB4C1FAC802D0023F8EA /* BaseViewController.h */,
+				F0FDAB4D1FAC802D0023F8EA /* BaseViewController.m */,
 				F0FDAB421FAC802D0023F8EA /* BaseCollectionViewCell.h */,
 				F0FDAB431FAC802D0023F8EA /* BaseCollectionViewCell.m */,
 				F0FDAB441FAC802D0023F8EA /* BaseModel.h */,
@@ -617,8 +652,6 @@
 				F0FDAB491FAC802D0023F8EA /* BaseTabBarController.m */,
 				F0FDAB4A1FAC802D0023F8EA /* BaseTableViewCell.h */,
 				F0FDAB4B1FAC802D0023F8EA /* BaseTableViewCell.m */,
-				F0FDAB4C1FAC802D0023F8EA /* BaseViewController.h */,
-				F0FDAB4D1FAC802D0023F8EA /* BaseViewController.m */,
 			);
 			path = BaseContollers;
 			sourceTree = "<group>";
@@ -891,9 +924,12 @@
 			files = (
 				F0FDAB7C1FAC802E0023F8EA /* AESCipher.m in Sources */,
 				F0A3E1701FB05F8E00DD2E90 /* CommonUtils.m in Sources */,
+				895B114D2085906600B30D5A /* BaseWebViewController.m in Sources */,
 				F0C5DB641FB9B848000681FD /* JinnLockViewController.m in Sources */,
 				F0FDABE71FAC802F0023F8EA /* NSMutableDictionary+JSON.m in Sources */,
 				F0C5DB5E1FB9B813000681FD /* JinnLockTool.m in Sources */,
+				895B1157208591EC00B30D5A /* HHTool.m in Sources */,
+				895B11532085909B00B30D5A /* NJKWebViewProgress.m in Sources */,
 				F0E6F0651FBECC9900819839 /* UIView+LayoutHelper.m in Sources */,
 				F0FDABF61FAC80BD0023F8EA /* ViewPager.m in Sources */,
 				F0C5DB521FB9B7A6000681FD /* JinnLockIndicator.m in Sources */,
@@ -912,6 +948,7 @@
 				F0FDABE21FAC802F0023F8EA /* BaseViewController.m in Sources */,
 				F0C5DB581FB9B7E2000681FD /* JinnLockSudoko.m in Sources */,
 				F0A3E1721FB05F8E00DD2E90 /* HttpRequstManager.m in Sources */,
+				895B11542085909B00B30D5A /* NJKWebViewProgressView.m in Sources */,
 				F0066E8C1FAC89520094D8B2 /* SetViewController.m in Sources */,
 				F0E5BEC51FC2BF8A00C07EF0 /* PageSurveyView.m in Sources */,
 				F0FDABE51FAC802F0023F8EA /* Date.m in Sources */,
@@ -923,6 +960,7 @@
 				F0FDABD01FAC802F0023F8EA /* SGPageTitleView.m in Sources */,
 				F0E6F0601FBECC9900819839 /* MBProgressHUD+Ex.m in Sources */,
 				F0CBFC811FAC593C00F9F3DB /* main.m in Sources */,
+				895B115A208593C800B30D5A /* BaseViewController+XHPhoto.m in Sources */,
 				F0FDABE31FAC802F0023F8EA /* UITabBar+Badge.m in Sources */,
 				F0E6F0641FBECC9900819839 /* UIView+Additions.m in Sources */,
 				F0A3E1591FB0387200DD2E90 /* MD5.m in Sources */,

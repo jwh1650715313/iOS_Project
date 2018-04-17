@@ -15,11 +15,22 @@
 #define kNotifyHUDProgressHide       @"kNotifyHUDProgressHide"//隐藏loading的通知
 
 
+//登录状态改变通知
+#define KNotificationLoginStateChange @"loginStateChange"
+
+//被踢下线
+#define KNotificationOnKick @"KNotificationOnKick"
+
+//发送通知
+#define KPostNotification(name,obj) [[NSNotificationCenter defaultCenter] postNotificationName:name object:obj]
+
+//获取系统对象
+#define kAppWindow          [UIApplication sharedApplication].delegate.window
+
+
+
+
 typedef void(^IndexBlock)(NSInteger index);
-
-
-
-
 
 
 //各种ID
