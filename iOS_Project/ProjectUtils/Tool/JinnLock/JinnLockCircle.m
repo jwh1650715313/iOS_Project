@@ -44,19 +44,28 @@
     
     if (self.state == JinnLockCircleStateNormal)
     {
-//        [self drawEmptyCircleWithContext:context
-//                                    rect:CGRectMake(kCircleWidth / 2,
-//                                                    kCircleWidth / 2,
-//                                                    self.diameter - kCircleWidth,
-//                                                    self.diameter - kCircleWidth)
-//                             strokeColor:JINN_LOCK_COLOR_NORMAL
-//                               fillColor:JINN_LOCK_COLOR_BACKGROUND];
         
         
-        [self drawSolidCircleWithContext:context rect:CGRectMake(self.diameter/3*0.75 ,
-                                                                 self.diameter/3*0.75 ,
-                                                                 self.diameter/2 - kCircleWidth,
-                                                                 self.diameter/2 - kCircleWidth) strokeColor:COLOR_RGB(253, 201, 154)];
+        
+        if (self.Indicator) {
+            
+            [self drawSolidCircleWithContext:context rect:CGRectMake(kCircleWidth / 2,
+                                                                     kCircleWidth / 2,
+                                                                     self.diameter - kCircleWidth,
+                                                                     self.diameter - kCircleWidth) strokeColor:COLOR_RGB(218,223,230)];
+            
+        }
+        else{
+            
+            [self drawEmptyCircleWithContext:context
+                                        rect:CGRectMake(kCircleWidth / 2,
+                                                        kCircleWidth / 2,
+                                                        self.diameter - kCircleWidth,
+                                                        self.diameter - kCircleWidth)
+                                 strokeColor:JINN_LOCK_COLOR_NORMAL
+                                   fillColor:JINN_LOCK_COLOR_BACKGROUND];
+        }
+        
     }
     else if (self.state == JinnLockCircleStateSelected)
     {
@@ -69,7 +78,7 @@
                                                      self.diameter * (0.5 - kCircleCenterRatio / 2),
                                                      self.diameter * kCircleCenterRatio,
                                                      self.diameter * kCircleCenterRatio)
-                              strokeColor:JINN_LOCK_COLOR_NORMAL
+                              strokeColor:JINN_LOCK_COLOR_SELECT
                                 fillColor:JINN_LOCK_COLOR_BACKGROUND];
     }
     else if (self.state == JinnLockCircleStateFill)
@@ -79,7 +88,7 @@
                                                     kCircleWidth / 2,
                                                     self.diameter - kCircleWidth,
                                                     self.diameter - kCircleWidth)
-                             strokeColor:JINN_LOCK_COLOR_NORMAL];
+                             strokeColor:JINN_LOCK_COLOR_SELECT];
     }
     else if (self.state == JinnLockCircleStateError)
     {

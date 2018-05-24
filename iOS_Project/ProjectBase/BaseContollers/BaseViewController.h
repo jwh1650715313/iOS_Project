@@ -14,16 +14,20 @@
 
 @property (nonatomic, strong) HttpRequstManager *requestManager;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;//菊花loading
+@property (nonatomic, strong) HHNoNetWorkView *noNetWorkView;//菊花loading
 @property (nonatomic,assign) BOOL bShowTip;
 
+@property (nonatomic, strong) UITableView * tableView;
+@property (nonatomic,strong) NSMutableArray *dataSource;
 
 
 #pragma mark 公用方法
+
 - (void)requestData;//网络请求
 - (void)backAction:(UIButton *)sender;//返回
 - (void)gotoLoginViewController;//去登陆界面
-
-
+- (void)initUI;//数据初始化
+- (void)NoNetWorkViewClick;//无网络点击
 #pragma mark 界面切换
 
 //不需要传参数的push 只需告诉类名字符串
@@ -89,6 +93,13 @@
  */
 - (UIView *)ittemRedViewWithRedDotValue:(NSString *)redDotValue;
 
+#pragma mark --网络异常提醒页面相关
+/** 显示
+ */
+-(void)showNoNetWorkView;
+/** 隐藏
+ */
+- (void)hideNoNetWorkView;
 
 
 #pragma mark-显示loading

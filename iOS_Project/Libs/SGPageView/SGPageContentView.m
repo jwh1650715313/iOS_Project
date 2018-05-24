@@ -104,7 +104,7 @@
     // 设置内容
     UIViewController *childVC = self.childViewControllers[indexPath.item];
     childVC.view.frame = cell.contentView.frame;
-    NSLog(@"======%fd",cell.contentView.frame.size.height);
+    
     [cell.contentView addSubview:childVC.view];
     return cell;
 }

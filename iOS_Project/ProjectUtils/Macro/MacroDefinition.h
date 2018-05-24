@@ -10,6 +10,10 @@
 #define MacroDefinition_h
 
 
+#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+#define kNavBarHeight 44.0
+#define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
+#define kTopHeight (kStatusBarHeight + kNavBarHeight)
 
 
 // iPhone4,4s：320*480，iPhone5,5s：320*568，iPhone6：375*667，iPhone6plus：414*736
@@ -19,6 +23,8 @@
 #define KScreenWidth        ([UIScreen mainScreen].bounds.size.width)
 
 #define kScreen_Frame       (CGRectMake(0, 0 ,ScreenWidth,ScreenHeight))
+
+#define kScreen_Bounds  [[UIScreen mainScreen] bounds]
 
 //比例
 #define SCALE_HEIGHT(height)     (height * (KScreenHeight / 667.0))
@@ -36,6 +42,7 @@
 #define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+#define IS_IPHONE_X (IS_IPHONE && SCREEN_MAX_LENGTH == 812.0)
 
 
 
@@ -44,8 +51,7 @@
 // 常用高度
 #define NAVIGATION_HEIGHT   64
 
-// 主页面 Tab 高度
-#define kTabBarHeight  self.tabBarController.tabBar.height
+
 
 #pragma mark - Color
 // 从16进制得到颜色值 0x222222
@@ -54,10 +60,25 @@
 
 
 //UI颜色控制
-#define kUIToneBackgroundColor  [UIColor redColor] //UI整体背景色调 与文字颜色一一对应
-#define kUIToneTextColor kCyColorFromHex(0xffffff) //UI整体文字色调 与背景颜色对应
-#define kStatusBarStyle UIStatusBarStyleLightContent //状态栏样式
-#define kViewBackgroundColor kCyColorFromHex(0xf5f5f5) //界面View背景颜色
+#define kUITabarSelectColor  COLOR_RGB(38, 44, 81) //Tabbar选中的颜色
+#define KNavigationBarColor [UIColor whiteColor]   //导航栏背景颜色
+#define kStatusBarStyle UIStatusBarStyleLightContent //导航栏状态栏样式
+#define kViewBackgroundColor kCyColorFromHex(0xf3f3f3) //界面View背景颜色
+#define kSplitLlineColor kCyColorFromHex(0xe5e5e5) //分割线的颜色
+//按钮状态颜色
+#define kNormalColor kCyColorFromHex(0x6a9eff) //正常状态颜色
+#define kDisabledColor kCyColorFromHex(0xdcdcdc) //不可选中状态颜色
+
+#define kSelectColor kCyColorFromHex(0x8fb6ff) //选中状态颜色
+
+
+
+//文字颜色
+#define kUIToneTextColor kCyColorFromHex(0x3d405f) //UI整体文字色调 与背景颜色对应
+#define kMinorColor kCyColorFromHex(0x8d8d96) //次要文本,辅助状态的文本颜色
+#define kHyperlinkColor kCyColorFromHex(0x6a9eff) //用于跳转链接文案
+
+
 
 //颜色
 #define COLOR_RGBA(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
@@ -77,8 +98,14 @@
 #define TextColor [UIColor colorWithRed:(32/255.0f) green:(32/255.0f) blue:(32/255.0f) alpha:1]   //字体颜色
 
 
+
+//缺省头像图
+#define kPlaceHoldHeadImage [UIImage imageNamed:@"iconAbout"]
+
+
+
 // 常用字体
-#define NavFont Font(17)
+#define NavFont Font(18)
 #define Font(size) [UIFont systemFontOfSize:size]
 #define Font_Bold(size) [UIFont boldSystemFontOfSize:size]
 
@@ -88,16 +115,19 @@
 
 
 
-//当前版本
-#define CURRENT_VERSION       [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
+
+
+
+
 
 
 //开发的时候打印，但是发布的时候不打印的NSLog
 
 #ifdef DEBUG
-#define LRLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#define NSLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 #else
-#define LRLog(...)
+#define NSLog(...)
 
 #endif
 
@@ -108,6 +138,9 @@
 #define StrongSelf(type)  __strong typeof(type) type = weak##type;
 
 
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+
+
 
 //iOS系统版本
 #define iOS(versionAbove)    [[[UIDevice currentDevice] systemVersion] floatValue] >= versionAbove
@@ -115,9 +148,11 @@
 
 
 
+
 // 非空判断
 #define kEnsureNotNil(str) [HHTool ensureNotNiL:str]
 
 
+#define KstringByReplace(Str) [Str stringByReplacingOccurrencesOfString:@" " withString:@""]
 
 #endif /* MacroDefinition_h */

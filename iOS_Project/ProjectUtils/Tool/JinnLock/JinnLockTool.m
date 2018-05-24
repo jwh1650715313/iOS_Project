@@ -53,6 +53,9 @@
 {
     [[NSUserDefaults standardUserDefaults] setObject:passcode forKey:kJinnLockPasscode];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    
 }
 
 #pragma mark - 指纹解锁管理

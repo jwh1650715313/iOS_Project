@@ -45,7 +45,7 @@
     
     self.circleArray         = [NSMutableArray array];
     self.selectedCircleArray = [NSMutableArray array];
-    self.circleMargin        = kSudokoSideLength / 15;
+    self.circleMargin        =SCALE_WIDTH(kSudokoSideLength)/ 15;
 }
 
 - (void)createCircles
@@ -192,7 +192,7 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, kSudokoTrackWidth);
-    self.errorPasscode ? [JINN_LOCK_COLOR_ERROR set] : [JINN_LOCK_COLOR_NORMAL set];
+    self.errorPasscode ? [JINN_LOCK_COLOR_ERROR set] : [JINN_LOCK_COLOR_SELECT set];
     
     CGPoint addLines[9];
     int count = 0;

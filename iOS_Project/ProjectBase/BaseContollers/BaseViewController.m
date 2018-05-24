@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "HHLoginViewController.h"
 
 @interface BaseViewController ()
 
@@ -19,14 +20,14 @@
     // Do any additional setup after loading the view.
     
     [self showBack];
+    [self initUI];
     [self requestData];
-    
-  
     self.view.backgroundColor = kViewBackgroundColor;
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
      self.bShowTip = YES;
     
+ 
     
 }
 
@@ -42,6 +43,20 @@
 {
     [super viewWillAppear:animated];
     self.bShowTip = YES;
+    
+    
+    if (@available(iOS 11.0, *)) {
+        
+        [UITableView appearance].estimatedRowHeight = 0;
+        [UITableView appearance].estimatedSectionHeaderHeight = 0;
+        [UITableView appearance].estimatedSectionFooterHeight = 0;
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -59,9 +74,11 @@
     if (self.navigationController.viewControllers.count > 1) {
         UIViewController *vc = self.navigationController.viewControllers[self.navigationController.viewControllers.count - 2];
         if (vc.title.length > 0) {
-            [self showBackWithTitle:vc.title];
+//            [self showBackWithTitle:vc.title];
+              [self showBackWithTitle:nil];
         } else {
-            [self showBackWithTitle:vc.navigationItem.title];
+//            [self showBackWithTitle:vc.navigationItem.title];
+              [self showBackWithTitle:nil];
         }
     }
 }
@@ -74,11 +91,44 @@
 - (void)requestData {
     
 }
+
+//数据初始化
+- (void)initUI
+{
+    
+}
+
+-(UITableView *)tableView{
+    if (!_tableView) {
+        
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - kTopHeight) style:UITableViewStylePlain];
+        _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        
+        _tableView.backgroundColor=kViewBackgroundColor;
+        _tableView.scrollsToTop = YES;
+        
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+    }
+    return _tableView;
+}
+- (NSMutableArray *)dataSource{
+    if (!_dataSource) {
+        _dataSource=[[NSMutableArray alloc]init];
+    }
+    return _dataSource;
+}
+
 //返回
 - (void)gotoLoginViewController {
     
+      HHLoginViewController  *loginVc=[HHLoginViewController new];
     
-    [((AppDelegate *)[UIApplication sharedApplication].delegate) enterApp];
+      [UIApplication sharedApplication].keyWindow.rootViewController = loginVc;
+   
     
 }
 //去登陆界面
@@ -171,9 +221,9 @@
  *  @param title 需要传入上级界面标题
  */
 - (void)showBackWithTitle:(NSString *)title {
-    NSString *imageName = @"back_more1";
+    NSString *imageName = @"BackNormal";
     if (kStatusBarStyle == UIStatusBarStyleLightContent) {
-        imageName = @"back_more";
+        imageName = @"BackNormal";
     }
     [self setLeftItemWithIcon:[UIImage imageNamed:imageName] title:title selector:@selector(backAction:)];
 }
@@ -219,20 +269,21 @@
         [btn setImage:icon forState:UIControlStateHighlighted];
         if (title.length == 0) {
             //文字没有的话，点击区域+10
-            btn.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 13);
+            btn.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 23);
         } else {
             btn.imageEdgeInsets = UIEdgeInsetsMake(0, -3, 0, 3);
         }
     }
     if (title.length == 0) {
         //文字没有的话，点击区域+10
-        leight = leight + 10;
+        leight = leight + 30;
     }
-    view.frame = CGRectMake(0, 0, leight, 30);
-    btn.frame = CGRectMake(-5, 0, leight, 30);
+    view.frame = CGRectMake(0, 0, leight, 40);
+    btn.frame = CGRectMake(-10, 0, leight, 40);
     [view addSubview:btn];
     
     item = [[UIBarButtonItem alloc] initWithCustomView:view];
+    
     return item;
 }
 
@@ -296,11 +347,11 @@
     if (selector) {
         [btn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     }
-    float leight = icon.size.width;
     [btn setImage:icon forState:UIControlStateNormal];
     [btn setImage:icon forState:UIControlStateHighlighted];
-    btn.imageEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
-    [btn setFrame:CGRectMake(0, 0, leight, 30)];
+    btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [btn setFrame:CGRectMake(0, 0, 44, 44)];
+    
     
     item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     return item;
@@ -436,6 +487,40 @@
     }
     
 }
+
+
+#pragma mark --网络异常页面相关
+/** 显示
+ */
+-(void)showNoNetWorkView
+{
+    if (!_noNetWorkView) {
+        _noNetWorkView = [[HHNoNetWorkView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight-kTabBarHeight)];
+//        -kTopHeight
+    }
+    [self.view addSubview:_noNetWorkView];
+    _noNetWorkView.logo.image = [UIImage imageNamed:@"网络异常"];
+    _noNetWorkView.msg.text = @"网络异常";
+    _noNetWorkView.button.hidden = NO;
+    [_noNetWorkView.button setTitle:@"刷新试试" forState:UIControlStateNormal];
+    
+    [_noNetWorkView.button addTarget:self action:@selector(NoNetWorkViewClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+}
+-(void)NoNetWorkViewClick{
+    [self requestData];
+}
+
+/** 隐藏
+ */
+-(void)hideNoNetWorkView
+{
+    
+    [self.noNetWorkView removeFromSuperview];
+    
+}
+
 
 #pragma mark-显示Toast
 

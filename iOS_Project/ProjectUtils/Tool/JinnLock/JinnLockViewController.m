@@ -12,8 +12,10 @@
 #import "JinnLockConfig.h"
 #import "BaseTabBarController.h"
 #import "AppDelegate.h"
-//#import "HHGetMentLoanManger.h"
+#import "HHLoginModelManager.h"
 #import "TDTouchID.h"
+
+#import "HHLoginViewController.h"
 
 typedef NS_ENUM(NSInteger, JinnLockStep)
 {
@@ -45,6 +47,10 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
 
 @property (nonatomic, strong) JinnLockIndicator  *indicator;
 @property (nonatomic, strong) JinnLockSudoko     *sudoko;
+
+@property (nonatomic, strong) UIImageView        *headimage;
+@property (nonatomic, strong) UILabel            *phoneLabel;
+
 @property (nonatomic, strong) UILabel            *noticeLabel;
 @property (nonatomic, strong) UIButton           *resetButton;
 @property (nonatomic, strong) UIButton           *touchIdButton;
@@ -52,6 +58,12 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
 @property (nonatomic, assign) JinnLockStep       step;
 @property (nonatomic, strong) NSString           *passcodeTemp;
 @property (nonatomic, strong) LAContext          *context;
+@property (nonatomic, strong) UIView             *baseView;//忘记手势，密码登录
+@property (nonatomic,strong) UIButton *forgetGesture;//忘记手势
+@property (nonatomic,strong) UIView *splitLline;//分割线
+@property (nonatomic,strong) UIButton *PsdLogin;//密码登录
+
+
 
 
 @property (nonatomic, assign) NSInteger countt;
@@ -64,7 +76,14 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
 
 - (void)viewDidLoad
 {
+    
+    
     [super viewDidLoad];
+    
+    
+     self.view.backgroundColor=WhiteColor;
+    
+    
     
     if (self.type == JinnLockTypeModify) {
         self.title = @"修改手势密码";
@@ -89,14 +108,13 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         {
             [self updateUiForStep:JinnLockStepVerifyOld];
             
-                //[self showTouchIdView];
-                [TDTouchID td_showTouchIDWithDescribe:nil BlockState:^(TDTouchIDState state, NSError *error) {
-                    if (state == TDTouchIDStateSuccess) {
-                        
-                        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                        appDelegate.window.rootViewController = [BaseTabBarController new];
-                    }
-                }];
+            if ([JinnLockTool isTouchIdUnlockEnabled]) {
+                
+                [self showTouchIdView];
+                
+            }
+            
+            
         }
             break;
         case JinnLockTypeRemove:
@@ -136,24 +154,40 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
 
 - (void)createViews
 {
+    //九宫格
     JinnLockSudoko *sudoko = [[JinnLockSudoko alloc] init];
     [sudoko setDelegate:self];
-    //sudoko.backgroundColor = [UIColor redColor];
+    //    sudoko.backgroundColor = [UIColor redColor];
     [self.view addSubview:sudoko];
     [self setSudoko:sudoko];
     [sudoko mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerX.equalTo(self.view);
         make.centerY.centerY.equalTo(self.view).offset(50);
-        make.size.mas_equalTo(CGSizeMake(kSudokoSideLength, kSudokoSideLength));
+        make.size.mas_equalTo(CGSizeMake(SCALE_WIDTH(kSudokoSideLength), SCALE_WIDTH(kSudokoSideLength)));
     }];
     
+    
+    //提示
+    UILabel *noticeLabel = [[UILabel alloc] init];
+    [noticeLabel setFont:[UIFont systemFontOfSize:18]];
+    [noticeLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:noticeLabel];
+    [self setNoticeLabel:noticeLabel];
+    [noticeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.sudoko.mas_top).offset(-25);
+        make.height.mas_equalTo(20);
+    }];
+    
+    //绘制轨迹
     JinnLockIndicator *indicator = [[JinnLockIndicator alloc] init];
     //indicator.backgroundColor = [UIColor lightGrayColor];
+    indicator.tag=1001;
     [self.view addSubview:indicator];
     [self setIndicator:indicator];
     [indicator mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.bottom.equalTo(sudoko.mas_top).offset(-10);
+        make.bottom.equalTo(self.noticeLabel.mas_top).offset(-33);
         if (self.type == JinnLockTypeVerify) {
             
             make.size.mas_equalTo(CGSizeMake(kIndicatorSideLength, 0));
@@ -161,37 +195,53 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         else
         {
             make.size.mas_equalTo(CGSizeMake(kIndicatorSideLength, kIndicatorSideLength));
-        
+            
         }
         
     }];
     
-    UILabel *noticeLabel = [[UILabel alloc] init];
-    [noticeLabel setFont:[UIFont systemFontOfSize:14]];
-    [noticeLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:noticeLabel];
-    [self setNoticeLabel:noticeLabel];
-    [noticeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    //头像
+    UIImageView *headimage = [[UIImageView alloc] init];
+    //imgvv.backgroundColor = [UIColor redColor];
+    
+    NSString  *imgUrl=[NSString stringWithFormat:@"%@%@",QiNiuYunHostName,[HHUserInfoManager getInfo].photo];
+    
+    [headimage sd_setImageWithURL:[NSURL URLWithString:imgUrl]  placeholderImage:[UIImage imageNamed:@"headimage"]];
+    
+    [self.view addSubview:headimage];
+    [self setHeadimage:headimage];
+    self.headimage.hidden=YES;
+    self.headimage.layer.cornerRadius=35;
+    self.headimage.layer.masksToBounds=YES;
+    
+    [headimage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.sudoko.mas_top).offset(-70);
+        make.size.mas_equalTo(CGSizeMake(70, 70));
+        
+    }];
+    
+    //电话号码
+    UILabel *phonelabel = [[UILabel alloc] init];
+    [phonelabel setFont:[UIFont systemFontOfSize:18]];
+    [phonelabel setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:phonelabel];
+    [self setPhoneLabel:phonelabel];
+    self.phoneLabel.hidden=YES;
+    [phonelabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
-        make.bottom.equalTo(indicator.mas_top).offset(-20);
+        make.top.equalTo(self.headimage.mas_bottom).offset(20);
         make.height.mas_equalTo(20);
     }];
     
-    
-    UIImageView *imgvv = [[UIImageView alloc] init];
-    //imgvv.backgroundColor = [UIColor redColor];
-    imgvv.image = [UIImage imageNamed:@"icon_168"];
-    [self.view addSubview:imgvv];
-    [imgvv mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.bottom.equalTo(indicator.mas_top).offset(-70);
-        make.size.mas_equalTo(CGSizeMake(60, 60));
-    }];
+    phonelabel.text=[HHUserInfoManager getInfo].phone.length>0? [[HHUserInfoManager getInfo].phone stringByReplacingCharactersInRange:NSMakeRange(3, 4)  withString:@"****"]:@"";;
     
     
+    //重新设置
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [resetButton setTitle:kJinnLockResetText forState:UIControlStateNormal];
-    [resetButton setTitleColor:RedColor forState:UIControlStateNormal];
+    [resetButton setTitleColor:kMinorColor forState:UIControlStateNormal];
     [resetButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [resetButton addTarget:self action:@selector(resetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:resetButton];
@@ -214,6 +264,45 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         make.top.equalTo(sudoko.mas_bottom).offset(30);
         make.height.mas_equalTo(20);
     }];
+    
+    //忘记手势,密码登录
+    UIView  *view=[[UIView alloc]init];
+    //    view.backgroundColor=RedColor;
+    [self.view addSubview:view];
+    [self setBaseView:view];
+    self.baseView.hidden=YES;
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.sudoko.mas_bottom).offset(10);
+        make.size.mas_equalTo(CGSizeMake(150, 20));
+    }];
+    
+    [self.baseView addSubview:self.splitLline];
+    [self.baseView addSubview:self.forgetGesture];
+    [self.baseView addSubview:self.PsdLogin];
+    
+    [self.splitLline mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.baseView);
+        make.top.equalTo(self.baseView).offset(2.5);
+        make.size.mas_equalTo(CGSizeMake(1, 15));
+    }];
+    
+    
+    [self.forgetGesture mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.splitLline).offset(-12);
+        make.top.equalTo(self.baseView).offset(3);
+        make.size.mas_equalTo(CGSizeMake(60, 14));
+    }];
+    
+    
+    [self.PsdLogin mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.splitLline).offset(12);
+        make.top.equalTo(self.baseView).offset(3);
+        make.size.mas_equalTo(CGSizeMake(60, 14));
+    }];
+    
+    
+    
 }
 
 #pragma mark - Private
@@ -222,16 +311,9 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
 {
     
     
-//    [self.context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-//                 localizedReason:@"通过验证指纹解锁"
-//                           reply:^(BOOL success, NSError * _Nullable error) {
-//                               if (success)
-//                               {
-//                                   AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//                                   appDelegate.window.rootViewController = [TabBarViewController new];
-//                                   //[self hide];
-//                               }
-//                           }];
+    [JinnLockTool setTouchIdUnlockEnabled:YES];
+    
+    
     [TDTouchID td_showTouchIDWithDescribe:nil BlockState:^(TDTouchIDState state, NSError *error) {
         if (state == TDTouchIDStateSuccess) {
             
@@ -239,7 +321,11 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
             appDelegate.window.rootViewController = [BaseTabBarController new];
         }
     }];
-
+    
+    
+    
+    
+    
 }
 
 - (void)updateUiForStep:(JinnLockStep)step
@@ -252,7 +338,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         {
             self.noticeLabel.text = kJinnLockNewText;
             self.noticeLabel.textColor = JINN_LOCK_COLOR_NORMAL;
-            self.indicator.hidden = YES;
+            self.indicator.hidden = NO;
             self.resetButton.hidden = YES;
             self.touchIdButton.hidden = YES;
         }
@@ -270,7 +356,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         {
             self.noticeLabel.text = kJinnLockNotMatchText;
             self.noticeLabel.textColor = JINN_LOCK_COLOR_ERROR;
-            self.indicator.hidden = YES;
+            self.indicator.hidden = NO;
             self.resetButton.hidden = YES;
             self.touchIdButton.hidden = YES;
         }
@@ -279,9 +365,11 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         {
             self.noticeLabel.text = kJinnLockReNewText;
             self.noticeLabel.textColor = JINN_LOCK_COLOR_NORMAL;
-            self.indicator.hidden = YES;
+            self.indicator.hidden = NO;
             self.resetButton.hidden = YES;
             self.touchIdButton.hidden = YES;
+            
+            [self.indicator reset];
         }
             break;
         case JinnLockStepModifyOld:
@@ -342,17 +430,34 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         {
             self.noticeLabel.text = kJinnLockReNewText;
             self.noticeLabel.textColor = JINN_LOCK_COLOR_NORMAL;
-            self.indicator.hidden = YES;
+            self.indicator.hidden = NO;
             self.resetButton.hidden = YES;
             self.touchIdButton.hidden = YES;
+            
+            [self.indicator reset];
         }
             break;
         case JinnLockStepVerifyOld:
         {
+            NSLog(@"验证密码");
             self.noticeLabel.text = kJinnLockVerifyText;
             self.noticeLabel.textColor = JINN_LOCK_COLOR_NORMAL;
             self.indicator.hidden = YES;
             self.resetButton.hidden = YES;
+            self.headimage.hidden=NO;
+            self.phoneLabel.hidden=NO;
+            self.baseView.hidden=NO;
+            self.noticeLabel.font=Font(13);
+            [self.noticeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                
+                make.left.right.equalTo(self.view);
+                make.bottom.equalTo(self.sudoko.mas_top).offset(-5);
+                make.height.mas_equalTo(20);
+                
+                
+            }];
+            
+            
             
             if ([JinnLockTool isTouchIdUnlockEnabled] && [JinnLockTool isTouchIdSupported])
             {
@@ -373,14 +478,15 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
             self.resetButton.hidden = YES;
             self.touchIdButton.hidden = YES;
             if (_countt < 1) {
-               //[self hide];
-//                [KMUserInfoManager deleteInfo];
-//                [HHGetMentLoanManger deleteInfo];
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"appHasLogout" object:nil];
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+                [NSUserDefaultTools setStringValueWithKey:@"" key:[HHUserInfoManager getInfo].appUserId];
                 
-                appDelegate.window.rootViewController = [BaseTabBarController new];
+                
+                [self gotoLoginViewController];
+                
+                
+                
             }
         }
             break;
@@ -467,6 +573,10 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
 {
     if (self.type == JinnLockTypeCreate)
     {
+        JinnLockIndicator *indicator=[self.view viewWithTag:1001];
+        
+        [indicator reset];
+        
         [self updateUiForStep:JinnLockStepCreateNew];
     }
     else if (self.type == JinnLockTypeModify)
@@ -509,6 +619,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         {
             if ([passcode isEqualToString:self.passcodeTemp])
             {
+                
                 [JinnLockTool setGestureUnlockEnabled:YES];
                 [JinnLockTool setGesturePasscode:passcode];
                 
@@ -516,9 +627,23 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
                 {
                     [self.delegate passcodeDidCreate:passcode];
                 }
-                BaseTabBarController *tabbar =[BaseTabBarController new];
-                [self presentViewController:tabbar animated:YES completion:nil];
-                [self hide];
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+                appDelegate.window.rootViewController = [BaseTabBarController new];
+                
+                if ([CommonUtils IsOkString:self.info.token]) {
+                    
+                    [HHLoginModelManager saveInfo:self.info];
+                    
+                    [HHUserInfoManager saveInfo:self.info.userInfo];
+                    
+                    
+                    [NSUserDefaultTools setStringValueWithKey:passcode key:self.info.userInfo.appUserId];
+                    
+                }
+                
+                
+                
             }
             else
             {
@@ -534,7 +659,12 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         case JinnLockStepModifyOld:
         case JinnLockStepModifyReOld:
         {
-            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
+            
+            NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[HHUserInfoManager getInfo].appUserId];
+            
+//            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
+            if ([passcode isEqualToString:psd])
+            
             {
                 [self updateUiForStep:JinnLockStepModifyNew];
             }
@@ -584,7 +714,12 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         case JinnLockStepVerifyOld:
         case JinnLockStepVerifyReOld:
         {
-            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
+//            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
+            
+             NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[HHUserInfoManager getInfo].appUserId];
+            
+            if([passcode isEqualToString:psd])
+            
             {
                 if ([self.delegate respondsToSelector:@selector(passcodeDidVerify:)])
                 {
@@ -609,7 +744,11 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         case JinnLockStepRemoveOld:
         case JinnLockStepRemoveReOld:
         {
-            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
+             NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[HHUserInfoManager getInfo].appUserId];
+            
+//            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
+            
+            if ([passcode isEqualToString:psd])
             {
                 [JinnLockTool setGestureUnlockEnabled:NO];
                 
@@ -653,4 +792,73 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
     }
 }
 
+
+-(UIButton *)forgetGesture
+{
+    if (!_forgetGesture) {
+        
+        _forgetGesture=[UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [_forgetGesture addTarget:self action:@selector(forgetGestureClick) forControlEvents:UIControlEventTouchUpInside];
+        [_forgetGesture setTitle:@"忘记手势" forState:UIControlStateNormal];
+        [_forgetGesture setTitleColor:kMinorColor forState:UIControlStateNormal];
+        _forgetGesture.titleLabel.font=Font(14);
+        
+    }
+    
+    return _forgetGesture;
+}
+
+
+-(UIButton *)PsdLogin
+{
+    if (!_PsdLogin) {
+        
+        _PsdLogin=[UIButton buttonWithType:UIButtonTypeCustom];
+        
+        [_PsdLogin addTarget:self action:@selector(PsdLoginClick) forControlEvents:UIControlEventTouchUpInside];
+        [_PsdLogin setTitle:@"密码登录" forState:UIControlStateNormal];
+        [_PsdLogin setTitleColor:kMinorColor forState:UIControlStateNormal];
+        _PsdLogin.titleLabel.font=Font(14);
+        
+    }
+    
+    return _PsdLogin;
+}
+
+- (UIView *)splitLline
+{
+    if (!_splitLline) {
+        _splitLline = [[UIView alloc] init];
+        _splitLline.backgroundColor=kSplitLlineColor;
+    }
+    return _splitLline;
+}
+
+
+
+
+#pragma mark-忘记手势
+-(void)forgetGestureClick
+{
+    BaseNavigationController *NavigationVc=[[BaseNavigationController alloc]initWithRootViewController:[HHLoginViewController new]];
+    
+    [self presentViewController:NavigationVc animated:YES completion:nil];
+    
+}
+
+
+#pragma mark-密码登录
+-(void)PsdLoginClick
+{
+    BaseNavigationController *NavigationVc=[[BaseNavigationController alloc]initWithRootViewController:[HHLoginViewController new]];
+    
+    [self presentViewController:NavigationVc animated:YES completion:nil];
+}
+
+
+
+
+
 @end
+

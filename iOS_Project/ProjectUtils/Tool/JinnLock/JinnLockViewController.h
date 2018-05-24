@@ -9,7 +9,7 @@
 #import "JinnLockTool.h"
 #import "JinnLockSudoko.h"
 #import "JinnLockIndicator.h"
-
+#import "HHLoginModel.h"
 /**
  控制器类型
  */
@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, JinnLockAppearMode)
 /**
  密码创建成功
 
- @param passcode passcode
+ @param passcode passcoder
  */
 - (void)passcodeDidCreate:(NSString *)passcode;
 
@@ -61,10 +61,12 @@ typedef NS_ENUM(NSInteger, JinnLockAppearMode)
 
 @end
 
-@interface JinnLockViewController : UIViewController
+@interface JinnLockViewController : BaseViewController
 
 - (instancetype)initWithDelegate:(id<JinnLockViewControllerDelegate>)delegate
                             type:(JinnLockType)type
                       appearMode:(JinnLockAppearMode)appearMode;
+
+@property (nonatomic,strong) HHLoginModel *info;
 
 @end

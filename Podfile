@@ -14,4 +14,12 @@ pod 'FLEX', '~> 2.0', :configurations => ['Debug']
 pod 'IQKeyboardManager', '~> 5.0.2' ##  最高4.0.8了
 pod 'MMPopupView', '~> 1.7.2'
 pod 'SDCycleScrollView'
+pod 'Qiniu', '~> 7.1'
+pod 'AMapLocation'#高德定位sdk
+pod 'HMSegmentedControl'
+pod 'GPUImage'
+pod 'SCIndexView'
+pod 'UMengUShare/Social/WeChat'
+pod 'UMengUShare/Social/QQ'
+
 end

@@ -9,7 +9,7 @@
 #ifndef ThirdLibs_h
 #define ThirdLibs_h
 
-
+#define gaoDeKey @"c40b8852583b133d9373ea7b23a34feb"
 
 //苹果自带的
 #import <UIKit/UIKit.h>
@@ -18,7 +18,7 @@
 
 //第三方框架（从Github下载的）
 
-#import "UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"R
 #import "MJExtension.h"
 #import "MJRefresh.h"
 #import "AFNetworking.h"
@@ -27,6 +27,9 @@
 #import "AESCipher.h"
 #import "Masonry.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "SDCycleScrollView.h"
+#import "ZLPhotoActionSheet.h"//图片选择器
+//#import "LBPhotoBrowserManager.h"//图片浏览器
 
 //类别
 #import "UIView+LayoutHelper.h"
@@ -45,8 +48,8 @@
 #import "UIColor+Ex.h"
 #import "UIImage+Ex.h"
 #import "UIButton+Ex.h"
-#import "HHTool.h"
 
+#import "UIViewController+Ex.h"
 //自定义的一些工具类
 #import "HttpRequstManager.h"
 #import "HHPopupView.h"
@@ -58,19 +61,30 @@
 #import "CommonUtils.h"
 #import "HHPopupView.h"
 #import "PageSurveyView.h"
-
+#import "HHNoNetWorkView.h"//网络异常
+#import "MapManager.h"
+#import "HHUserInfo.h"
+#import "HHUserInfoManager.h"
+#import "HHTool.h"
+#import "HHLoginModel.h"
+#import "HHLoginModelManager.h"
 //各种基类
 
 #import  "BaseTabBarController.h"
 #import  "BaseNavigationController.h"
 #import  "BaseViewController.h"
-#import "BaseViewController+XHPhoto.h"
+#import  "BaseModel.h"
+#import  "BaseTableViewCell.h"
+#import  "BaseTextTableViewCell.h"
+#import  "JinnLockViewController.h"//手势密码
+#import  "BaseWebViewController.h"
+#import  "BaseViewController+XHPhoto.h"
 //入口
 #import  "AppDelegate.h"
 
 
 //各种第三方库(比如腾讯的bugly，友盟)
 #import <Bugly/Bugly.h>
-
-
+#import <QiniuSDK.h>//七牛云
+#import <CloudPushSDK/CloudPushSDK.h>//阿里云推送
 #endif /* ThirdLibs_h */

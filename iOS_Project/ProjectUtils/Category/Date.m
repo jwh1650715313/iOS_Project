@@ -53,7 +53,7 @@
         [monthDataArray addObject:locationString];
     }
     
-    //NSLog(@"monthDataArray = %@",monthDataArray);
+   
     return monthDataArray;
 }
 

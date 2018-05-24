@@ -4,25 +4,37 @@
 <array>
 	<dict>
 		<key>class</key>
-		<string>HomeViewController</string>
+		<string>HHHomeViewController</string>
 		<key>title</key>
 		<string>首页</string>
 		<key>image</key>
-		<string>home</string>
+		<string>jiekuan_normal</string>
 		<key>selectedImage</key>
-		<string>home-h</string>
+		<string>jiekuan_pressed</string>
 		<key>badgeValue</key>
 		<string>0</string>
 	</dict>
 	<dict>
 		<key>class</key>
-		<string>MyViewController</string>
+		<string>HHStatementViewController</string>
+		<key>title</key>
+		<string>报表</string>
+		<key>image</key>
+		<string>huankuan_normal</string>
+		<key>selectedImage</key>
+		<string>huankuan_pressed</string>
+		<key>badgeValue</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>HHMyViewController</string>
 		<key>title</key>
 		<string>我的</string>
 		<key>image</key>
-		<string>personal</string>
+		<string>wode_normal</string>
 		<key>selectedImage</key>
-		<string>personal-h</string>
+		<string>wode_pressed</string>
 		<key>badgeValue</key>
 		<string>0</string>
 	</dict>

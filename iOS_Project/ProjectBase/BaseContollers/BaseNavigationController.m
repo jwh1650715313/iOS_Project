@@ -6,6 +6,7 @@
 //  Copyright © 2017年 JIng. All rights reserved.
 //
 
+
 #import "BaseNavigationController.h"
 
 @interface BaseNavigationController ()<UIGestureRecognizerDelegate>
@@ -26,10 +27,19 @@
 {
      [super loadView];
     
-    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor redColor] size:CGSizeMake(self.navigationBar.frame.size.width, self.navigationBar.frame.size.height + 20)]
+     //去除导航栏下方的横线
+   
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:KNavigationBarColor size:CGSizeMake(self.navigationBar.frame.size.width, self.navigationBar.frame.size.height+20)]
                             forBarPosition:UIBarPositionAny
                                 barMetrics:UIBarMetricsDefault];
-    [self.navigationBar setShadowImage:[UIImage new]];
+ 
+    
+//    [self.navigationBar setShadowImage:[UIImage new]];
+    
+    
+   
+ 
+    
     
     //状态栏颜色
     [[UIApplication sharedApplication] setStatusBarStyle:kStatusBarStyle];
@@ -39,19 +49,27 @@
     
     if ([UIDevice currentDevice].systemVersion.floatValue > 7.0) {
         //导航背景颜色
-        self.navigationBar.barTintColor = kUIToneBackgroundColor;
+        self.navigationBar.barTintColor = KNavigationBarColor;
     }
     
+    
+    
+
     //系统返回按钮图片设置
-    NSString *imageName = @"back_more1";
+    
+    /*
+     //这段代码 没卵用
+     
+    NSString *imageName = @"BackNormal";
     if (kStatusBarStyle == UIStatusBarStyleLightContent) {
-        imageName = @"back_more";
+        imageName = @"BackNormal";
     }
     UIImage *image = [UIImage imageNamed:imageName];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[image resizableImageWithCapInsets:UIEdgeInsetsMake(0, image.size.width-1, 0, 0)] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor:kUIToneTextColor];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(5, 0)
                                                          forBarMetrics:UIBarMetricsDefault];
+     */
 }
 
 #pragma mark - 侧滑手势
@@ -82,6 +100,14 @@
     /**
      *  这里有两个条件不允许手势执行，1、当前控制器为根控制器；2、如果这个push、pop动画正在执行（私有属性）
      */
+    
+    
+    // 自定义页面不响应手势
+    UIViewController *vc = [self.childViewControllers lastObject];
+    if ([vc isKindOfClass:[JinnLockViewController class]]) {
+        return NO;
+    }
+    
     return self.viewControllers.count != 1 && ![[self valueForKey:@"_isTransitioning"] boolValue];
 }
 

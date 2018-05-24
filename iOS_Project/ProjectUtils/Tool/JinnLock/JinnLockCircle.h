@@ -20,6 +20,8 @@ typedef NS_ENUM(NSInteger, JinnLockCircleState)
 
 @property (nonatomic, assign) JinnLockCircleState state;
 @property (nonatomic, assign) CGFloat diameter;
+@property (nonatomic, assign) BOOL Indicator;
+
 
 - (instancetype)initWithDiameter:(CGFloat)diameter;
 - (void)updateCircleState:(JinnLockCircleState)state;

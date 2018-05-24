@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS_Project/ProjectUtils/Tool/PhotoBrowser/ZLPhotoActionSheet.m"
+            timestampString = "548770703.974527"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
+            landmarkName = "-show"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS_Project/ProjectUtils/Tool/PhotoBrowser/ZLPhotoActionSheet.m"
+            timestampString = "548770703.974918"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
+            landmarkName = "-show"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZLPhotoActionSheet show]"
+                  moduleName = "iOS_Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/howard/Desktop/%E6%B8%A0%E9%81%93%E5%95%86App/iOS_Project/iOS_Project/ProjectUtils/Tool/PhotoBrowser/ZLPhotoActionSheet.m"
+                  timestampString = "548853541.360775"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "355"
+                  endingLineNumber = "355"
+                  offsetFromSymbolStart = "1957">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZLPhotoActionSheet show]"
+                  moduleName = "iOS_Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/howard/Desktop/%E6%B8%A0%E9%81%93%E5%95%86App/iOS_Project/iOS_Project/ProjectUtils/Tool/PhotoBrowser/ZLPhotoActionSheet.m"
+                  timestampString = "548853541.363426"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "355"
+                  endingLineNumber = "355"
+                  offsetFromSymbolStart = "1972">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ZLPhotoActionSheet show]"
+                  moduleName = "iOS_Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/howard/Desktop/%E6%B8%A0%E9%81%93%E5%95%86App/iOS_Project/iOS_Project/ProjectUtils/Tool/PhotoBrowser/ZLPhotoActionSheet.m"
+                  timestampString = "548853541.36562"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "355"
+                  endingLineNumber = "355"
+                  offsetFromSymbolStart = "2449">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

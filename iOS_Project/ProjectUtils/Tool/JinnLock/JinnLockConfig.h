@@ -15,10 +15,16 @@
 #define JINN_LOCK_COLOR_BACKGROUND [UIColor whiteColor]
 
 // 正常主题颜色
-#define JINN_LOCK_COLOR_NORMAL kCyColorFromHex(0xfc5e39)
+#define JINN_LOCK_COLOR_NORMAL kCyColorFromHex(0x3d405f)
+
+
+
+// 选中的颜色
+#define JINN_LOCK_COLOR_SELECT kCyColorFromHex(0x6a9eff)
+
 
 // 错误提示颜色
-#define JINN_LOCK_COLOR_ERROR  kCyColorFromHex(0xfc5e39)
+#define JINN_LOCK_COLOR_ERROR  kCyColorFromHex(0xdd5949)
 
 // 重设按钮颜色
 #define JINN_LOCK_COLOR_BUTTON [[UIColor lightGrayColor] colorWithAlphaComponent:0.5]
@@ -26,12 +32,12 @@
 /**
  *  指示器大小
  */
-static const CGFloat kIndicatorSideLength = 30.f;
+static const CGFloat kIndicatorSideLength = 50.f;
 
 /**
  *  九宫格大小
  */
-static const CGFloat kSudokoSideLength = 300.f;
+static const CGFloat kSudokoSideLength = 320;
 
 /**
  *  圆圈边框粗细(指示器和九宫格的一样粗细)
@@ -46,7 +52,7 @@ static const CGFloat kIndicatorTrackWidth = 0.5f;
 /**
  *  九宫格轨迹粗细
  */
-static const CGFloat kSudokoTrackWidth = 8.f;
+static const CGFloat kSudokoTrackWidth = 2.f;
 
 /**
  *  圆圈选中效果中心点和圆圈比例

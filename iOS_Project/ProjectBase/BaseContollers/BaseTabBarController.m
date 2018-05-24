@@ -22,9 +22,11 @@
     [self setViewControllers];
     
     self.view.backgroundColor=WhiteColor;
-    
-    
+
 }
+
+
+
 
 
 - (void)viewWillLayoutSubviews{
@@ -60,14 +62,17 @@
     
     UIViewController *vc = [classs new];
     vc.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    vc.tabBarItem.selectedImage = [[[UIImage imageNamed:selectedImage] imageToColor:kUIToneBackgroundColor] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //被选择中的image颜色
+    vc.tabBarItem.selectedImage = [[[UIImage imageNamed:selectedImage] imageToColor:kUITabarSelectColor] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
     //起点-8图标才会到顶，然后加上计算出来的y坐标
 //    float origin = -9 + 6;
 //    vc.tabBarItem.imageInsets = UIEdgeInsetsMake(origin, 0, -origin,0);
 //    vc.tabBarItem.titlePositionAdjustment = UIOffsetMake(-2 + 8, 2-8);
     //title设置
     [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
-    [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:kUIToneBackgroundColor,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
+    //被选中字体的颜色
+    [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:kUITabarSelectColor,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
     vc.tabBarItem.title = title;
     
     //小红点

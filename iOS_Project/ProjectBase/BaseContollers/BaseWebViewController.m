@@ -47,9 +47,12 @@
 //    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_webUrl]]];
 //    [self.view addSubview:_webView];
     _webView.delegate = _progressProxy;
+    
+    NSString  *hostURL=HostName;
+    
      if (_webUrl.length) {
          
-         if (_webUrl.length >= HostName.length && [[_webUrl substringToIndex:HostName.length] isEqualToString:HostName]) {
+         if (_webUrl.length >= hostURL.length && [[_webUrl substringToIndex:hostURL.length] isEqualToString:hostURL]) {
              _request = [NSURLRequest requestWithURL:[NSURL URLWithString:_webUrl]];
          }
         [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_webUrl]]];
@@ -101,7 +104,10 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
-    if (_webUrl.length >= HostName.length && [[_webUrl substringToIndex:HostName.length] isEqualToString:HostName]) {
+    
+      NSString  *hostURL=HostName;
+    
+    if (_webUrl.length >= hostURL.length && [[_webUrl substringToIndex:hostURL.length] isEqualToString:hostURL]) {
         if (!_authenticated) {
             _authenticated = NO;
             _urlConnection = [[NSURLConnection alloc] initWithRequest:_request delegate:self];

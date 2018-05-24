@@ -53,6 +53,8 @@
         float y = self.circleMargin * (4.5 * (i / 3) + 1.5);
         
         JinnLockCircle *circle = [[JinnLockCircle alloc] initWithDiameter:self.circleMargin * 3];
+        
+        circle.Indicator=YES;
         [circle setTag:kIndicatorLevelBase + i];
         [circle setFrame:CGRectMake(x, y, self.circleMargin * 3, self.circleMargin * 3)];
         [self.circleArray addObject:circle];
@@ -82,12 +84,22 @@
 
 - (void)reset
 {
+    
+   
+    
+    
     for (JinnLockCircle *circle in self.circleArray)
     {
         [circle updateCircleState:JinnLockCircleStateNormal];
     }
     
     [self.selectedCircleArray removeAllObjects];
+    
+    
+    
+   
+    
+    
 }
 
 #pragma mark - Draw
@@ -101,7 +113,7 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, kIndicatorTrackWidth);
-    [JINN_LOCK_COLOR_NORMAL set];
+    [ClearColor set];
     
     CGPoint addLines[9];
     int count = 0;

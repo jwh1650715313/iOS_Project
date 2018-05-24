@@ -114,8 +114,15 @@
 //获取时间戳
 +(NSString*)getCurrentTimestamp;
 
+//判断车牌号是否正常
++(BOOL)isValidCarNo:(NSString *)carNo;
 
 
+// 正则匹配用户身份证号15或18位
++ (BOOL)checkUserIdCard: (NSString *) idCard;
+
+//千位符
++ (NSString *)positiveFormat:(NSString *)text;
 
 
 @end

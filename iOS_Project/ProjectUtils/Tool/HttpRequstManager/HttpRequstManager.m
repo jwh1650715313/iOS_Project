@@ -43,6 +43,15 @@
         //设置请求头
 //        [_sessionManager.requestSerializer setValue:@"fd0a97bd4bcb79b91c50b47c7fa8246d" forHTTPHeaderField:@"apikey"];
         
+        _sessionManager.requestSerializer.timeoutInterval = 15.0;//超时间隔
+       
+        
+        [_sessionManager.requestSerializer setValue:KToken forHTTPHeaderField:@"token"];
+        
+        [_sessionManager.requestSerializer setValue:Kplatform forHTTPHeaderField:@"platform"];
+        [_sessionManager.requestSerializer setValue:kappVersion forHTTPHeaderField:@"appVersion"];
+        
+        
         //Responses 响应Header参数
         _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     }
@@ -58,6 +67,15 @@
     
     NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
     
+    
+    [_sessionManager.requestSerializer setValue:KToken forHTTPHeaderField:@"token"];
+    
+    [_sessionManager.requestSerializer setValue:Kplatform forHTTPHeaderField:@"platform"];
+    [_sessionManager.requestSerializer setValue:kappVersion forHTTPHeaderField:@"appVersion"];
+    
+    
+    
+
     [self.sessionManager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -74,9 +92,19 @@
         NSDictionary *dic = [error userInfo];
         failure(error, dic[@"NSLocalizedDescription"]);
         
-        NSLog(@"请求路径: %@\n\t返回错误结果: %@", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"]);
+        NSHTTPURLResponse *response = (NSHTTPURLResponse*)task.response;
+        //通讯协议状态码
+        NSInteger statusCode = response.statusCode;
+        
+        NSLog(@"请求路径: %@\n\t返回错误结果: %@\n错误码：%ld", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"],(long)statusCode);
+        
+        if (statusCode==401) {
+            //token过期
+            [self logoutForTokenExpired:nil];
+        }
     }];
 }
+
 
 
 
@@ -90,6 +118,12 @@
     NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
     
     
+    [_sessionManager.requestSerializer setValue:KToken forHTTPHeaderField:@"token"];
+    
+    [_sessionManager.requestSerializer setValue:Kplatform forHTTPHeaderField:@"platform"];
+    [_sessionManager.requestSerializer setValue:kappVersion forHTTPHeaderField:@"appVersion"];
+
+    
     if ([CommonUtils checkNet]) {
         
         [self.sessionManager POST:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -99,17 +133,32 @@
             
             if (0 == code) {
                 success(responseObject,code);
-            } else {
+            }
+              else {
                 failure(nil, responseObject[@"msg"]);
             }
+            
             
             NSLog(@"请求路径:%@\n\t返回结果: %@", task.response.URL, responseObject);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
             NSDictionary *dic = [error userInfo];
             failure(error, dic[@"NSLocalizedDescription"]);
+            NSHTTPURLResponse *response = (NSHTTPURLResponse*)task.response;
+            //通讯协议状态码
+            NSInteger statusCode = response.statusCode;
             
-            NSLog(@"请求路径: %@\n\t返回错误结果: %@", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"]);
+            NSLog(@"请求路径: %@\n\t返回错误结果: %@\n错误码：%ld", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"],(long)statusCode);
+            
+            if (statusCode==401) {
+                //token过期
+                [self logoutForTokenExpired:nil];
+      
+            }
+            
+           
+            
         }];
     }
     else{
@@ -120,6 +169,166 @@
     
     
 }
+
+
+
+#pragma mark ————— 退出登录 —————
+- (void)logoutForTokenExpired:(void (^)(BOOL, NSString *))completion{
+    [HHPopupView  alertWithTitle:@"登录信息过期" detail:@"请重新登录？" contentArr:@[@"登录"] selectComplete:^(NSInteger index) {
+        
+        
+        if (index==0) {
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+            
+            [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+            
+            [HHUserInfoManager deleteInfo];
+            
+            [HHLoginModelManager deleteInfo];
+            
+            
+            
+            KPostNotification(KNotificationLoginStateChange, @NO);
+        }
+        
+        
+        
+    }];
+    
+    
+}
+
+//POST,设置body
+- (void)postRequestWithBodyUrl:(NSString *)url
+                        params:(id)params
+                       success:(SuccessBlock)success
+                       failure:(FailureBlock)failure
+{
+    
+    
+    NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
+    
+
+    NSString *requestURL=[HostName stringByAppendingString:url];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:requestURL parameters:nil error:nil];
+    
+    request.timeoutInterval= 10;
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:KToken forHTTPHeaderField:@"token"];
+    [request setValue:Kplatform forHTTPHeaderField:@"platform"];
+    [request setValue:kappVersion forHTTPHeaderField:@"appVersion"];
+    
+    NSData *body  =[params dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:body];
+
+    
+    
+    if ([CommonUtils checkNet]) {
+        
+        [[self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+            NSInteger responseStatusCode = [httpResponse statusCode];
+            
+            
+            if (responseStatusCode==401) {
+                //token过期
+                [self logoutForTokenExpired:nil];
+                return ;
+            }
+            
+            NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
+
+            if (0 == code) {
+                success(responseObject,code);
+            }else if (code==3){
+                //token过期
+                [self logoutForTokenExpired:nil];
+            }  else {
+                failure(nil, responseObject[@"msg"]);
+            }
+            
+            NSLog(@"请求路径:%@\n\t返回结果: %@", response.URL, responseObject);
+            
+            
+        }]resume];
+        
+    }
+    else{
+        
+        NSError *error;
+        failure(error , @"服务器连接失败");
+    }
+    
+}
+
+
+
+//POST,设置body包含code
+- (void)postRequestWithBodyUrl:(NSString *)url
+                        params:(id)params
+                       success:(SuccessBlock)success
+                   failureCode:(FailureBlockCode)failure
+{
+    NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
+    
+    
+    NSString *requestURL=[HostName stringByAppendingString:url];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:requestURL parameters:nil error:nil];
+    
+    request.timeoutInterval= 10;
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:KToken forHTTPHeaderField:@"token"];
+    [request setValue:Kplatform forHTTPHeaderField:@"platform"];
+    [request setValue:kappVersion forHTTPHeaderField:@"appVersion"];
+    
+    NSData *body  =[params dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:body];
+    
+    
+    
+    if ([CommonUtils checkNet]) {
+        
+        [[self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+            NSInteger responseStatusCode = [httpResponse statusCode];
+            
+            
+            if (responseStatusCode==401) {
+                //token过期
+                [self logoutForTokenExpired:nil];
+                return ;
+            }
+            
+            NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
+            
+            if (0 == code) {
+                success(responseObject,code);
+            }else if (code==3){
+                //token过期
+                [self logoutForTokenExpired:nil];
+            }  else {
+                failure(nil, responseObject[@"msg"],code);
+            }
+            
+            NSLog(@"请求路径:%@\n\t返回结果: %@", response.URL, responseObject);
+            
+            
+        }]resume];
+        
+    }
+    else{
+        
+        NSError *error;
+       
+        failure(error , @"服务器连接失败",10001);
+    }
+}
+
+
+
+
 
 //PUT
 - (void)putRequestWithUrl:(NSString *)url
@@ -136,7 +345,10 @@
             
             if (0 == code) {
                 success(responseObject,code);
-            } else {
+            }else if (code==3){
+                //token过期
+                KPostNotification(KNotificationOnKick, nil);
+            }  else {
                 failure(nil, responseObject[@"msg"]);
             }
             
@@ -171,7 +383,10 @@
         
         if (0 == code) {
             success(responseObject,code);
-        } else {
+        }else if (code==3){
+            //token过期
+            KPostNotification(KNotificationOnKick, nil);
+        }  else {
             failure(nil, responseObject[@"msg"]);
         }
         
@@ -195,7 +410,10 @@
         
         if (0 == code) {
             success(responseObject,code);
-        } else {
+        }else if (code==3){
+            //token过期
+            KPostNotification(KNotificationOnKick, nil);
+        }  else {
             failure(nil, responseObject[@"msg"]);
         }
         
@@ -209,28 +427,6 @@
 }
 
 
-
-- (void)logoutForTokenExpired
-{
-    [HHPopupView  alertWithTitle:@"登录信息过期" detail:@"请重新登录？" contentArr:@[@"登录"] selectComplete:^(NSInteger index) {
-        
-        
-        if (index==0) {
-            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-            
-            [[UIApplication sharedApplication] unregisterForRemoteNotifications];
-            
-            //写退出登录的逻辑
-            
-            
-            
-            KPostNotification(KNotificationLoginStateChange, @NO);
-        }
-        
-        
-        
-    }];
-}
 
 
 @end

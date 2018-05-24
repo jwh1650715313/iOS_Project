@@ -33,6 +33,15 @@ typedef void(^PageSurveyViewBlock)(void);
                        yOffset:(CGFloat)y
                    ButtonBlock:(PageSurveyViewBlock)block;
 
+//定义的
++ (void)showButtonWithText:(NSString *)text
+                 BtnText:(NSString *)BtnText
+            withIconName:(NSString *)iconN
+                  toView:(UIView *)view
+                 yOffset:(CGFloat)y
+             ButtonBlock:(PageSurveyViewBlock)block;
+
+
 + (void)showMsg:(NSString *)msg withIconName:(NSString *)iconN toView:(UIView *)view;
 + (void)showMsg:(NSString *)msg withIconName:(NSString *)iconN toView:(UIView *)view yOffset:(CGFloat)y;
 + (void)hideFromView:(UIView *)view;

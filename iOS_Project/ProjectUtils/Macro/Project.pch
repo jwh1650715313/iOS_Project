@@ -12,9 +12,10 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+
+#import  "HttpConfig.h"
 #import  "MacroDefinition.h"
 #import  "ConfigDefinition.h"
-#import  "HttpConfig.h"
 #import  "ThirdLibs.h"
 #import  "JinnLockConfig.h"
 

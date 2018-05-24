@@ -25,18 +25,19 @@
     if (self) {
         self.logo = [[UIImageView alloc] init];
         [self.logo setContentMode:UIViewContentModeBottom];
+        self.logo.backgroundColor=[UIColor clearColor];
         [self addSubview:self.logo];
         
         [self.logo mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.mas_left).offset(15.0);
             make.right.mas_equalTo(self.mas_right).offset(-15.0);
-            make.bottom.mas_equalTo(self.mas_centerY);
-            make.top.mas_equalTo(self.mas_top).offset(15.0);
+//          make.bottom.mas_equalTo(self.mas_centerY);
+            make.top.mas_equalTo(self.mas_top).offset(100);
         }];
         
         self.msg = [[UILabel alloc] init];
-        self.msg.font = Font(SCALE_HEIGHT(15));
-        self.msg.textColor = [UIColor colorWithHexString:@"666666"];
+        self.msg.font = Font(SCALE_HEIGHT(17));
+        self.msg.textColor = [UIColor colorWithHexString:@"8d8d96"];
         self.msg.textAlignment = NSTextAlignmentCenter;
         self.msg.numberOfLines = 0;
         [self addSubview:self.msg];
@@ -44,17 +45,17 @@
         [self.msg mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.mas_left).offset(15.0);
             make.right.mas_equalTo(self.mas_right).offset(-15.0);
-            make.top.mas_equalTo(self.mas_centerY).offset(15.0);
+            make.top.mas_equalTo(self.logo.mas_bottom).offset(20.0);
         }];
         
         self.button = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.button.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.button.titleLabel.font = [UIFont systemFontOfSize:17];
         self.button.layer.borderWidth = 1.0f;
-        self.button.layer.borderColor = [UIColor colorWithHexString:@"e8e8e8"].CGColor;
+        self.button.layer.borderColor = [UIColor colorWithHexString:@"3a3d5c"].CGColor;
         self.button.layer.cornerRadius = 3.0f;
         self.button.clipsToBounds = YES;
         [self.button setTitle:@"重新加载" forState:UIControlStateNormal];
-        [self.button setTitleColor:[UIColor colorWithHexString:@"666666"] forState:UIControlStateNormal];
+        [self.button setTitleColor:[UIColor colorWithHexString:@"3d405f"] forState:UIControlStateNormal];
         [self.button setBackgroundImage:[UIImage imageWithColor:kViewBackgroundColor] forState:UIControlStateHighlighted];
         
         [self.button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -62,9 +63,9 @@
         self.button.hidden = YES; // 默认隐藏
         
         [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.msg.mas_bottom).offset(15);
-            make.height.mas_equalTo(@35);
-            make.width.mas_equalTo(@105);
+            make.top.mas_equalTo(self.msg.mas_bottom).offset(70);
+            make.height.mas_equalTo(@45);
+            make.width.mas_equalTo(@160);
             make.centerX.mas_equalTo(self.mas_centerX);
         }];
         
@@ -80,7 +81,7 @@
 + (void)showViewWithType:(ExceptionViewType)type toView:(UIView *)view
 {
     NSString *msg = @"";
-    NSString *ImgName = @"no-message";
+    NSString *ImgName = @"zanwushuju";
     switch (type) {
         case ExceptionViewType_NetWorkError:
         {
@@ -112,7 +113,7 @@
 + (void)showViewWithType:(ExceptionViewType)type toView:(UIView *)view yOffset:(CGFloat)y
 {
     NSString *msg = @"";
-    NSString *ImgName = @"no-message";
+    NSString *ImgName = @"zanwushuju";
     switch (type) {
         case ExceptionViewType_NetWorkError:
         {
@@ -139,13 +140,13 @@
 
 + (void) showViewWithText:(NSString *)text toView:(UIView *)view{
     NSString *msg = text?:@"服务异常";
-    NSString *ImgName = @"no-message";
+    NSString *ImgName = @"zanwushuju";
     [self showMsg:msg withIconName:ImgName toView:view];
 }
 
 + (void)showViewWithText:(NSString *)text toView:(UIView *)view yOffset:(CGFloat)y{
     NSString *msg = text?:@"服务异常";
-    NSString *ImgName = @"no-message";
+    NSString *ImgName = @"zanwushuju";
     [self showMsg:msg withIconName:ImgName toView:view yOffset:y];
 }
 
@@ -190,7 +191,7 @@
                    ButtonBlock:(PageSurveyViewBlock)block
 {
     NSString *msg = @"";
-    NSString *ImgName = @"no-message";
+    NSString *ImgName = @"zanwushuju";
     switch (type) {
         case ExceptionViewType_NetWorkError:
         {
@@ -217,6 +218,38 @@
                         yOffset:y
                     ButtonBlock:block];
 }
+
+//定义的
++ (void)showButtonWithText:(NSString *)text
+                   BtnText:(NSString *)BtnText
+              withIconName:(NSString *)iconN
+                    toView:(UIView *)view
+                   yOffset:(CGFloat)y
+               ButtonBlock:(PageSurveyViewBlock)block
+{
+    NSString *ImgName =iconN.length>0?iconN:@"no-message";
+    
+    
+    for (UIView *sView in view.subviews) {
+        if ([sView isKindOfClass:[PageSurveyView class]]) {
+            return;
+        }
+    }
+    
+    PageSurveyView *sView = [[PageSurveyView alloc] initWithFrame:CGRectMake(0, y, view.bounds.size.width, view.bounds.size.height - y)];
+    sView.logo.image = [UIImage imageNamed:ImgName];
+    sView.msg.text = text;
+    sView.button.hidden = NO;
+    sView.block = block;
+    [sView.button setTitle:BtnText forState:UIControlStateNormal];
+    sView.backgroundColor = view.backgroundColor;
+    [view addSubview:sView];
+    
+    
+    
+}
+
+
 
 + (void)showButtonViewWithMsg:(NSString *)msg
                  withIconName:(NSString *)iconN

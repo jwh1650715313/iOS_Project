@@ -10,7 +10,7 @@
 
 typedef void(^SuccessBlock)(id response, NSInteger resposeCode);
 typedef void(^FailureBlock)(NSError *error, NSString *errorMsg);
-typedef void(^FailureBlockCode)(NSDictionary *error, NSString *errorMsg,NSInteger code);
+typedef void(^FailureBlockCode)(NSError *error, NSString *errorMsg,NSInteger code);
 
 @interface HttpRequstManager : NSObject
 
@@ -20,11 +20,35 @@ typedef void(^FailureBlockCode)(NSDictionary *error, NSString *errorMsg,NSIntege
                   success:(SuccessBlock)success
                   failure:(FailureBlock)failure;
 
+
+
 //POST
 - (void)postRequestWithUrl:(NSString *)url
                     params:(id)params
                    success:(SuccessBlock)success
                    failure:(FailureBlock)failure;
+
+
+
+
+
+
+
+//POST,设置body
+- (void)postRequestWithBodyUrl:(NSString *)url
+                    params:(id)params
+                   success:(SuccessBlock)success
+                   failure:(FailureBlock)failure;
+
+
+
+//POST,设置body包含code
+- (void)postRequestWithBodyUrl:(NSString *)url
+                        params:(id)params
+                       success:(SuccessBlock)success
+                       failureCode:(FailureBlockCode)failure;
+
+
 
 //PUT
 - (void)putRequestWithUrl:(NSString *)url
