@@ -63,11 +63,11 @@
 #import "PageSurveyView.h"
 #import "HHNoNetWorkView.h"//网络异常
 #import "MapManager.h"
-#import "HHUserInfo.h"
-#import "HHUserInfoManager.h"
+#import "YCUserInfo.h"
+#import "YCUserInfoManager.h"
 #import "HHTool.h"
-#import "HHLoginModel.h"
-#import "HHLoginModelManager.h"
+#import "YCLoginModel.h"
+#import "YCLoginModelManager.h"
 //各种基类
 
 #import  "BaseTabBarController.h"
@@ -86,5 +86,6 @@
 //各种第三方库(比如腾讯的bugly，友盟)
 #import <Bugly/Bugly.h>
 #import <QiniuSDK.h>//七牛云
-#import <CloudPushSDK/CloudPushSDK.h>//阿里云推送
+#import <UMSocialCore/UMSocialCore.h>
+
 #endif /* ThirdLibs_h */

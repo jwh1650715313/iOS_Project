@@ -8,30 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4A0BCA17E91BF7CF7DE42578 /* libPods-iOS_Project.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8971C429C0733904364B6854 /* libPods-iOS_Project.a */; };
-		5608B13F208478750079E376 /* HHUpdateVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608B13E208478750079E376 /* HHUpdateVersion.m */; };
+		5608B13F208478750079E376 /* YCUpdateVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608B13E208478750079E376 /* YCUpdateVersion.m */; };
 		560904F720901E3700946343 /* HHNoNetWorkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560904F620901E3700946343 /* HHNoNetWorkView.m */; };
 		5630AD4F208DD8CF00BAB4B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5630AD4E208DD8CF00BAB4B2 /* Assets.xcassets */; };
-		8915CFCD20AEA2DF00467E29 /* HHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFCB20AEA2DF00467E29 /* HHHomeViewController.m */; };
-		8915CFCE20AEA2DF00467E29 /* HHHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915CFCC20AEA2DF00467E29 /* HHHomeViewController.xib */; };
 		8915CFD220AEA30B00467E29 /* HHStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFD020AEA30B00467E29 /* HHStatementViewController.m */; };
 		8915CFD320AEA30B00467E29 /* HHStatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915CFD120AEA30B00467E29 /* HHStatementViewController.xib */; };
-		8915CFD720AEA32200467E29 /* HHMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFD520AEA32200467E29 /* HHMyViewController.m */; };
-		8915CFD820AEA32200467E29 /* HHMyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915CFD620AEA32200467E29 /* HHMyViewController.xib */; };
-		8915CFEA20AEDE5900467E29 /* HHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFDB20AEDE5900467E29 /* HHLoginViewController.m */; };
-		8915CFEB20AEDE5900467E29 /* HHLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915CFDC20AEDE5900467E29 /* HHLoginViewController.xib */; };
-		8915CFEC20AEDE5900467E29 /* HHRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFDE20AEDE5900467E29 /* HHRegisterViewController.m */; };
-		8915CFED20AEDE5900467E29 /* HHRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915CFDF20AEDE5900467E29 /* HHRegisterViewController.xib */; };
-		8915CFEE20AEDE5900467E29 /* HHResetLoginPsdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFE120AEDE5900467E29 /* HHResetLoginPsdViewController.m */; };
-		8915CFEF20AEDE5900467E29 /* HHLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFE420AEDE5900467E29 /* HHLoginModel.m */; };
-		8915CFF020AEDE5900467E29 /* HHLoginModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFE620AEDE5900467E29 /* HHLoginModelManager.m */; };
 		8915CFF120AEDE5900467E29 /* WIFISetupHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915CFE820AEDE5900467E29 /* WIFISetupHelper.m */; };
 		8915CFF220AEDE5900467E29 /* WIFISetupHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8915CFE920AEDE5900467E29 /* WIFISetupHelper.xib */; };
-		8918682C2068EC6400046B70 /* HHUserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8918682B2068EC6400046B70 /* HHUserInfoManager.m */; };
-		8918682F2068ECAE00046B70 /* HHUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8918682E2068ECAE00046B70 /* HHUserInfo.m */; };
-		891BA3602063B40F00E007F2 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891BA35C2063B40F00E007F2 /* AlicloudUtils.framework */; };
-		891BA3612063B40F00E007F2 /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891BA35D2063B40F00E007F2 /* CloudPushSDK.framework */; };
-		891BA3622063B40F00E007F2 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891BA35E2063B40F00E007F2 /* UTDID.framework */; };
-		891BA3632063B40F00E007F2 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891BA35F2063B40F00E007F2 /* UTMini.framework */; };
+		8918682C2068EC6400046B70 /* YCUserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8918682B2068EC6400046B70 /* YCUserInfoManager.m */; };
+		8918682F2068ECAE00046B70 /* YCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8918682E2068ECAE00046B70 /* YCUserInfo.m */; };
 		891BA3652063B67100E007F2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 891BA3642063B67100E007F2 /* libz.tbd */; };
 		891BA3672063B67A00E007F2 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 891BA3662063B67A00E007F2 /* libresolv.tbd */; };
 		891BA3692063B68100E007F2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891BA3682063B68100E007F2 /* CoreTelephony.framework */; };
@@ -53,6 +38,22 @@
 		894CA9312060A8B100E40CEA /* MapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 894CA9302060A8B100E40CEA /* MapManager.m */; };
 		894CA9332060B03A00E40CEA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894CA9322060B03A00E40CEA /* CoreLocation.framework */; };
 		89564383207C914100506562 /* BaseViewController+XHPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 89564382207C914100506562 /* BaseViewController+XHPhoto.m */; };
+		895EE0BD20C77AD8006A7689 /* YCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0BB20C77AD8006A7689 /* YCLoginViewController.m */; };
+		895EE0BE20C77AD8006A7689 /* YCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895EE0BC20C77AD8006A7689 /* YCLoginViewController.xib */; };
+		895EE0C220C77DFC006A7689 /* YCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0C020C77DFC006A7689 /* YCRegisterViewController.m */; };
+		895EE0C320C77DFC006A7689 /* YCRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895EE0C120C77DFC006A7689 /* YCRegisterViewController.xib */; };
+		895EE0C720C77E6B006A7689 /* YCResetLoginPsdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0C520C77E6B006A7689 /* YCResetLoginPsdViewController.m */; };
+		895EE0C820C77E6B006A7689 /* YCResetLoginPsdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895EE0C620C77E6B006A7689 /* YCResetLoginPsdViewController.xib */; };
+		895EE0CB20C78079006A7689 /* YCLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0CA20C78079006A7689 /* YCLoginModel.m */; };
+		895EE0CE20C7808B006A7689 /* YCLoginModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0CD20C7808B006A7689 /* YCLoginModelManager.m */; };
+		895EE0D620C78D1B006A7689 /* YCActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0D420C78D1B006A7689 /* YCActivityViewController.m */; };
+		895EE0D720C78D1B006A7689 /* YCActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895EE0D520C78D1B006A7689 /* YCActivityViewController.xib */; };
+		895EE0DB20C78D2F006A7689 /* YCChooseCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0D920C78D2F006A7689 /* YCChooseCarViewController.m */; };
+		895EE0DC20C78D2F006A7689 /* YCChooseCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895EE0DA20C78D2F006A7689 /* YCChooseCarViewController.xib */; };
+		895EE0E020C78D4D006A7689 /* YCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0DE20C78D4D006A7689 /* YCHomeViewController.m */; };
+		895EE0E120C78D4D006A7689 /* YCHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895EE0DF20C78D4D006A7689 /* YCHomeViewController.xib */; };
+		895EE0E520C78D6D006A7689 /* YCMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895EE0E320C78D6D006A7689 /* YCMyViewController.m */; };
+		895EE0E620C78D6D006A7689 /* YCMyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895EE0E420C78D6D006A7689 /* YCMyViewController.xib */; };
 		8998DB8820B561880095696C /* NSBundle+ZLPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8998DB4D20B561870095696C /* NSBundle+ZLPhotoBrowser.m */; };
 		8998DB8920B561880095696C /* ZLPhotoActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8998DB4F20B561870095696C /* ZLPhotoActionSheet.xib */; };
 		8998DB8A20B561880095696C /* ZLPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8998DB5020B561870095696C /* ZLPhotoBrowser.bundle */; };
@@ -203,45 +204,23 @@
 
 /* Begin PBXFileReference section */
 		0D30EB8CD65C13AE2EECCA8F /* Pods-iOS_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Project/Pods-iOS_Project.debug.xcconfig"; sourceTree = "<group>"; };
-		5608B13D208478750079E376 /* HHUpdateVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HHUpdateVersion.h; sourceTree = "<group>"; };
-		5608B13E208478750079E376 /* HHUpdateVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHUpdateVersion.m; sourceTree = "<group>"; };
+		5608B13D208478750079E376 /* YCUpdateVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCUpdateVersion.h; sourceTree = "<group>"; };
+		5608B13E208478750079E376 /* YCUpdateVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCUpdateVersion.m; sourceTree = "<group>"; };
 		560904F520901E3700946343 /* HHNoNetWorkView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HHNoNetWorkView.h; sourceTree = "<group>"; };
 		560904F620901E3700946343 /* HHNoNetWorkView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHNoNetWorkView.m; sourceTree = "<group>"; };
 		5630AD4E208DD8CF00BAB4B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B0D0C2BEF544ADF38FEEA12 /* Pods-iOS_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Project.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_Project/Pods-iOS_Project.release.xcconfig"; sourceTree = "<group>"; };
-		8915CFCA20AEA2DF00467E29 /* HHHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HHHomeViewController.h; sourceTree = "<group>"; };
-		8915CFCB20AEA2DF00467E29 /* HHHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHHomeViewController.m; sourceTree = "<group>"; };
-		8915CFCC20AEA2DF00467E29 /* HHHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HHHomeViewController.xib; sourceTree = "<group>"; };
 		8915CFCF20AEA30B00467E29 /* HHStatementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HHStatementViewController.h; sourceTree = "<group>"; };
 		8915CFD020AEA30B00467E29 /* HHStatementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHStatementViewController.m; sourceTree = "<group>"; };
 		8915CFD120AEA30B00467E29 /* HHStatementViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HHStatementViewController.xib; sourceTree = "<group>"; };
-		8915CFD420AEA32200467E29 /* HHMyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HHMyViewController.h; sourceTree = "<group>"; };
-		8915CFD520AEA32200467E29 /* HHMyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHMyViewController.m; sourceTree = "<group>"; };
-		8915CFD620AEA32200467E29 /* HHMyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HHMyViewController.xib; sourceTree = "<group>"; };
-		8915CFDA20AEDE5900467E29 /* HHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHLoginViewController.h; sourceTree = "<group>"; };
-		8915CFDB20AEDE5900467E29 /* HHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHLoginViewController.m; sourceTree = "<group>"; };
-		8915CFDC20AEDE5900467E29 /* HHLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHLoginViewController.xib; sourceTree = "<group>"; };
-		8915CFDD20AEDE5900467E29 /* HHRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHRegisterViewController.h; sourceTree = "<group>"; };
-		8915CFDE20AEDE5900467E29 /* HHRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHRegisterViewController.m; sourceTree = "<group>"; };
-		8915CFDF20AEDE5900467E29 /* HHRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHRegisterViewController.xib; sourceTree = "<group>"; };
-		8915CFE020AEDE5900467E29 /* HHResetLoginPsdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHResetLoginPsdViewController.h; sourceTree = "<group>"; };
-		8915CFE120AEDE5900467E29 /* HHResetLoginPsdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHResetLoginPsdViewController.m; sourceTree = "<group>"; };
-		8915CFE320AEDE5900467E29 /* HHLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHLoginModel.h; sourceTree = "<group>"; };
-		8915CFE420AEDE5900467E29 /* HHLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHLoginModel.m; sourceTree = "<group>"; };
-		8915CFE520AEDE5900467E29 /* HHLoginModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHLoginModelManager.h; sourceTree = "<group>"; };
-		8915CFE620AEDE5900467E29 /* HHLoginModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHLoginModelManager.m; sourceTree = "<group>"; };
 		8915CFE720AEDE5900467E29 /* WIFISetupHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WIFISetupHelper.h; sourceTree = "<group>"; };
 		8915CFE820AEDE5900467E29 /* WIFISetupHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WIFISetupHelper.m; sourceTree = "<group>"; };
 		8915CFE920AEDE5900467E29 /* WIFISetupHelper.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WIFISetupHelper.xib; sourceTree = "<group>"; };
 		891868062064A0BA00046B70 /* iOS_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS_Project.entitlements; sourceTree = "<group>"; };
-		8918682A2068EC6400046B70 /* HHUserInfoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HHUserInfoManager.h; sourceTree = "<group>"; };
-		8918682B2068EC6400046B70 /* HHUserInfoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHUserInfoManager.m; sourceTree = "<group>"; };
-		8918682D2068ECAE00046B70 /* HHUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HHUserInfo.h; sourceTree = "<group>"; };
-		8918682E2068ECAE00046B70 /* HHUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHUserInfo.m; sourceTree = "<group>"; };
-		891BA35C2063B40F00E007F2 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
-		891BA35D2063B40F00E007F2 /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CloudPushSDK.framework; sourceTree = "<group>"; };
-		891BA35E2063B40F00E007F2 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
-		891BA35F2063B40F00E007F2 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
+		8918682A2068EC6400046B70 /* YCUserInfoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCUserInfoManager.h; sourceTree = "<group>"; };
+		8918682B2068EC6400046B70 /* YCUserInfoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCUserInfoManager.m; sourceTree = "<group>"; };
+		8918682D2068ECAE00046B70 /* YCUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCUserInfo.h; sourceTree = "<group>"; };
+		8918682E2068ECAE00046B70 /* YCUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCUserInfo.m; sourceTree = "<group>"; };
 		891BA3642063B67100E007F2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		891BA3662063B67A00E007F2 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		891BA3682063B68100E007F2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -275,6 +254,31 @@
 		894CA9322060B03A00E40CEA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		89564381207C914100506562 /* BaseViewController+XHPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseViewController+XHPhoto.h"; sourceTree = "<group>"; };
 		89564382207C914100506562 /* BaseViewController+XHPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BaseViewController+XHPhoto.m"; sourceTree = "<group>"; };
+		895EE0BA20C77AD8006A7689 /* YCLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCLoginViewController.h; sourceTree = "<group>"; };
+		895EE0BB20C77AD8006A7689 /* YCLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCLoginViewController.m; sourceTree = "<group>"; };
+		895EE0BC20C77AD8006A7689 /* YCLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YCLoginViewController.xib; sourceTree = "<group>"; };
+		895EE0BF20C77DFC006A7689 /* YCRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCRegisterViewController.h; sourceTree = "<group>"; };
+		895EE0C020C77DFC006A7689 /* YCRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCRegisterViewController.m; sourceTree = "<group>"; };
+		895EE0C120C77DFC006A7689 /* YCRegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YCRegisterViewController.xib; sourceTree = "<group>"; };
+		895EE0C420C77E6B006A7689 /* YCResetLoginPsdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCResetLoginPsdViewController.h; sourceTree = "<group>"; };
+		895EE0C520C77E6B006A7689 /* YCResetLoginPsdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCResetLoginPsdViewController.m; sourceTree = "<group>"; };
+		895EE0C620C77E6B006A7689 /* YCResetLoginPsdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YCResetLoginPsdViewController.xib; sourceTree = "<group>"; };
+		895EE0C920C78079006A7689 /* YCLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCLoginModel.h; sourceTree = "<group>"; };
+		895EE0CA20C78079006A7689 /* YCLoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCLoginModel.m; sourceTree = "<group>"; };
+		895EE0CC20C7808B006A7689 /* YCLoginModelManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCLoginModelManager.h; sourceTree = "<group>"; };
+		895EE0CD20C7808B006A7689 /* YCLoginModelManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCLoginModelManager.m; sourceTree = "<group>"; };
+		895EE0D320C78D1B006A7689 /* YCActivityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCActivityViewController.h; sourceTree = "<group>"; };
+		895EE0D420C78D1B006A7689 /* YCActivityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCActivityViewController.m; sourceTree = "<group>"; };
+		895EE0D520C78D1B006A7689 /* YCActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YCActivityViewController.xib; sourceTree = "<group>"; };
+		895EE0D820C78D2F006A7689 /* YCChooseCarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCChooseCarViewController.h; sourceTree = "<group>"; };
+		895EE0D920C78D2F006A7689 /* YCChooseCarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCChooseCarViewController.m; sourceTree = "<group>"; };
+		895EE0DA20C78D2F006A7689 /* YCChooseCarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YCChooseCarViewController.xib; sourceTree = "<group>"; };
+		895EE0DD20C78D4D006A7689 /* YCHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCHomeViewController.h; sourceTree = "<group>"; };
+		895EE0DE20C78D4D006A7689 /* YCHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCHomeViewController.m; sourceTree = "<group>"; };
+		895EE0DF20C78D4D006A7689 /* YCHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YCHomeViewController.xib; sourceTree = "<group>"; };
+		895EE0E220C78D6D006A7689 /* YCMyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCMyViewController.h; sourceTree = "<group>"; };
+		895EE0E320C78D6D006A7689 /* YCMyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCMyViewController.m; sourceTree = "<group>"; };
+		895EE0E420C78D6D006A7689 /* YCMyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YCMyViewController.xib; sourceTree = "<group>"; };
 		8971C429C0733904364B6854 /* libPods-iOS_Project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS_Project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8998DB4C20B561870095696C /* NSBundle+ZLPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ZLPhotoBrowser.h"; sourceTree = "<group>"; };
 		8998DB4D20B561870095696C /* NSBundle+ZLPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ZLPhotoBrowser.m"; sourceTree = "<group>"; };
@@ -551,11 +555,7 @@
 				891BA3652063B67100E007F2 /* libz.tbd in Frameworks */,
 				891BA3692063B68100E007F2 /* CoreTelephony.framework in Frameworks */,
 				891BA3672063B67A00E007F2 /* libresolv.tbd in Frameworks */,
-				891BA3632063B40F00E007F2 /* UTMini.framework in Frameworks */,
 				894CA9332060B03A00E40CEA /* CoreLocation.framework in Frameworks */,
-				891BA3612063B40F00E007F2 /* CloudPushSDK.framework in Frameworks */,
-				891BA3602063B40F00E007F2 /* AlicloudUtils.framework in Frameworks */,
-				891BA3622063B40F00E007F2 /* UTDID.framework in Frameworks */,
 				F07880911FCCFDD7009C2B64 /* CoreMotion.framework in Frameworks */,
 				F0FDAB781FAC802E0023F8EA /* Bugly.framework in Frameworks */,
 				F04683601FAC7AA0000A6114 /* Foundation.framework in Frameworks */,
@@ -584,8 +584,8 @@
 		5608B13C208478630079E376 /* UpdateVersion */ = {
 			isa = PBXGroup;
 			children = (
-				5608B13D208478750079E376 /* HHUpdateVersion.h */,
-				5608B13E208478750079E376 /* HHUpdateVersion.m */,
+				5608B13D208478750079E376 /* YCUpdateVersion.h */,
+				5608B13E208478750079E376 /* YCUpdateVersion.m */,
 			);
 			path = UpdateVersion;
 			sourceTree = "<group>";
@@ -602,32 +602,16 @@
 		56B458D220AEBAA80033B0CC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8915CFCA20AEA2DF00467E29 /* HHHomeViewController.h */,
-				8915CFCB20AEA2DF00467E29 /* HHHomeViewController.m */,
-				8915CFCC20AEA2DF00467E29 /* HHHomeViewController.xib */,
+				895EE0DD20C78D4D006A7689 /* YCHomeViewController.h */,
+				895EE0DE20C78D4D006A7689 /* YCHomeViewController.m */,
+				895EE0DF20C78D4D006A7689 /* YCHomeViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		56B458D320AEBAB90033B0CC /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		56B458D420AEBAC10033B0CC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		8915CFC420AE9F8100467E29 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				56B458D420AEBAC10033B0CC /* Model */,
-				56B458D320AEBAB90033B0CC /* View */,
 				56B458D220AEBAA80033B0CC /* Controller */,
 			);
 			path = Home;
@@ -641,20 +625,20 @@
 			path = My;
 			sourceTree = "<group>";
 		};
-		8915CFC620AE9F8100467E29 /* Statement */ = {
+		8915CFC620AE9F8100467E29 /* Test */ = {
 			isa = PBXGroup;
 			children = (
 				8915CFC920AEA13600467E29 /* Main */,
 			);
-			path = Statement;
+			path = Test;
 			sourceTree = "<group>";
 		};
 		8915CFC820AEA13000467E29 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				8915CFD420AEA32200467E29 /* HHMyViewController.h */,
-				8915CFD520AEA32200467E29 /* HHMyViewController.m */,
-				8915CFD620AEA32200467E29 /* HHMyViewController.xib */,
+				895EE0E220C78D6D006A7689 /* YCMyViewController.h */,
+				895EE0E320C78D6D006A7689 /* YCMyViewController.m */,
+				895EE0E420C78D6D006A7689 /* YCMyViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -675,14 +659,15 @@
 		8915CFD920AEDE5900467E29 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				8915CFDA20AEDE5900467E29 /* HHLoginViewController.h */,
-				8915CFDB20AEDE5900467E29 /* HHLoginViewController.m */,
-				8915CFDC20AEDE5900467E29 /* HHLoginViewController.xib */,
-				8915CFDD20AEDE5900467E29 /* HHRegisterViewController.h */,
-				8915CFDE20AEDE5900467E29 /* HHRegisterViewController.m */,
-				8915CFDF20AEDE5900467E29 /* HHRegisterViewController.xib */,
-				8915CFE020AEDE5900467E29 /* HHResetLoginPsdViewController.h */,
-				8915CFE120AEDE5900467E29 /* HHResetLoginPsdViewController.m */,
+				895EE0BA20C77AD8006A7689 /* YCLoginViewController.h */,
+				895EE0BB20C77AD8006A7689 /* YCLoginViewController.m */,
+				895EE0BC20C77AD8006A7689 /* YCLoginViewController.xib */,
+				895EE0BF20C77DFC006A7689 /* YCRegisterViewController.h */,
+				895EE0C020C77DFC006A7689 /* YCRegisterViewController.m */,
+				895EE0C120C77DFC006A7689 /* YCRegisterViewController.xib */,
+				895EE0C420C77E6B006A7689 /* YCResetLoginPsdViewController.h */,
+				895EE0C520C77E6B006A7689 /* YCResetLoginPsdViewController.m */,
+				895EE0C620C77E6B006A7689 /* YCResetLoginPsdViewController.xib */,
 				8915CFE220AEDE5900467E29 /* Model */,
 				8915CFE720AEDE5900467E29 /* WIFISetupHelper.h */,
 				8915CFE820AEDE5900467E29 /* WIFISetupHelper.m */,
@@ -694,34 +679,23 @@
 		8915CFE220AEDE5900467E29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8915CFE320AEDE5900467E29 /* HHLoginModel.h */,
-				8915CFE420AEDE5900467E29 /* HHLoginModel.m */,
-				8915CFE520AEDE5900467E29 /* HHLoginModelManager.h */,
-				8915CFE620AEDE5900467E29 /* HHLoginModelManager.m */,
+				895EE0C920C78079006A7689 /* YCLoginModel.h */,
+				895EE0CA20C78079006A7689 /* YCLoginModel.m */,
+				895EE0CC20C7808B006A7689 /* YCLoginModelManager.h */,
+				895EE0CD20C7808B006A7689 /* YCLoginModelManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		891868292068EC3700046B70 /* HHUserInfoManager */ = {
+		891868292068EC3700046B70 /* YCUserInfoManager */ = {
 			isa = PBXGroup;
 			children = (
-				8918682A2068EC6400046B70 /* HHUserInfoManager.h */,
-				8918682B2068EC6400046B70 /* HHUserInfoManager.m */,
-				8918682D2068ECAE00046B70 /* HHUserInfo.h */,
-				8918682E2068ECAE00046B70 /* HHUserInfo.m */,
+				8918682A2068EC6400046B70 /* YCUserInfoManager.h */,
+				8918682B2068EC6400046B70 /* YCUserInfoManager.m */,
+				8918682D2068ECAE00046B70 /* YCUserInfo.h */,
+				8918682E2068ECAE00046B70 /* YCUserInfo.m */,
 			);
-			path = HHUserInfoManager;
-			sourceTree = "<group>";
-		};
-		891BA35B2063B40F00E007F2 /* OneSDK */ = {
-			isa = PBXGroup;
-			children = (
-				891BA35C2063B40F00E007F2 /* AlicloudUtils.framework */,
-				891BA35D2063B40F00E007F2 /* CloudPushSDK.framework */,
-				891BA35E2063B40F00E007F2 /* UTDID.framework */,
-				891BA35F2063B40F00E007F2 /* UTMini.framework */,
-			);
-			path = OneSDK;
+			path = YCUserInfoManager;
 			sourceTree = "<group>";
 		};
 		893D3FAD20B69A1A00C71B33 /* STPhotoBrowser */ = {
@@ -768,6 +742,42 @@
 				894CA9302060A8B100E40CEA /* MapManager.m */,
 			);
 			path = MapManager;
+			sourceTree = "<group>";
+		};
+		895EE0CF20C78C85006A7689 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				895EE0D120C78CE2006A7689 /* Controller */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		895EE0D020C78C9E006A7689 /* ChooseCar */ = {
+			isa = PBXGroup;
+			children = (
+				895EE0D220C78CE8006A7689 /* Controller */,
+			);
+			path = ChooseCar;
+			sourceTree = "<group>";
+		};
+		895EE0D120C78CE2006A7689 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				895EE0D320C78D1B006A7689 /* YCActivityViewController.h */,
+				895EE0D420C78D1B006A7689 /* YCActivityViewController.m */,
+				895EE0D520C78D1B006A7689 /* YCActivityViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		895EE0D220C78CE8006A7689 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				895EE0D820C78D2F006A7689 /* YCChooseCarViewController.h */,
+				895EE0D920C78D2F006A7689 /* YCChooseCarViewController.m */,
+				895EE0DA20C78D2F006A7689 /* YCChooseCarViewController.xib */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		8998DB4B20B561870095696C /* PhotoBrowser */ = {
@@ -1252,10 +1262,12 @@
 		F0FDAA4E1FAC802D0023F8EA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				8915CFD920AEDE5900467E29 /* Login */,
 				8915CFC420AE9F8100467E29 /* Home */,
+				895EE0D020C78C9E006A7689 /* ChooseCar */,
+				895EE0CF20C78C85006A7689 /* Activity */,
+				8915CFD920AEDE5900467E29 /* Login */,
 				8915CFC520AE9F8100467E29 /* My */,
-				8915CFC620AE9F8100467E29 /* Statement */,
+				8915CFC620AE9F8100467E29 /* Test */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1266,7 +1278,6 @@
 				893D3FAD20B69A1A00C71B33 /* STPhotoBrowser */,
 				899E6FAA2084A9C5001B9416 /* NJKWebViewProgress */,
 				F0FDAB511FAC802E0023F8EA /* Other */,
-				891BA35B2063B40F00E007F2 /* OneSDK */,
 				F0A3E1791FB06A1800DD2E90 /* MMDateView */,
 				F0A3E1561FB0387200DD2E90 /* Md5 */,
 				F0FDAA561FAC802D0023F8EA /* AES */,
@@ -1410,7 +1421,7 @@
 				8998DB4B20B561870095696C /* PhotoBrowser */,
 				560904F420901DF500946343 /* NoNetWorkView */,
 				5608B13C208478630079E376 /* UpdateVersion */,
-				891868292068EC3700046B70 /* HHUserInfoManager */,
+				891868292068EC3700046B70 /* YCUserInfoManager */,
 				894CA92B2060A59300E40CEA /* MapManager */,
 				F07880211FCCFCC6009C2B64 /* BlocksKit */,
 				F0787FF61FCC3627009C2B64 /* PickerTool */,
@@ -1499,7 +1510,7 @@
 		F0CBFC661FAC593C00F9F3DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = HH;
+				CLASSPREFIX = YC;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "景文浩";
 				TargetAttributes = {
@@ -1552,21 +1563,24 @@
 				893EE8F120995B0000E449AD /* useragreement.html in Resources */,
 				F0CBFC7E1FAC593C00F9F3DB /* LaunchScreen.storyboard in Resources */,
 				8915CFF220AEDE5900467E29 /* WIFISetupHelper.xib in Resources */,
+				895EE0BE20C77AD8006A7689 /* YCLoginViewController.xib in Resources */,
 				F0FDABD91FAC802F0023F8EA /* WebViewJavascriptBridge.js.txt in Resources */,
 				5630AD4F208DD8CF00BAB4B2 /* Assets.xcassets in Resources */,
-				8915CFD820AEA32200467E29 /* HHMyViewController.xib in Resources */,
 				893D3FC920B69D7200C71B33 /* HHTestViewController.xib in Resources */,
 				F0F268931FCC07BE006BA938 /* BaseTextTableViewCell.xib in Resources */,
 				8998DB8B20B561880095696C /* ZLPhotoBrowserCell.xib in Resources */,
+				895EE0E120C78D4D006A7689 /* YCHomeViewController.xib in Resources */,
+				895EE0DC20C78D2F006A7689 /* YCChooseCarViewController.xib in Resources */,
+				895EE0C820C77E6B006A7689 /* YCResetLoginPsdViewController.xib in Resources */,
 				F0FDAB771FAC802E0023F8EA /* TabBarConfigure.plist in Resources */,
-				8915CFCE20AEA2DF00467E29 /* HHHomeViewController.xib in Resources */,
-				8915CFED20AEDE5900467E29 /* HHRegisterViewController.xib in Resources */,
+				895EE0E620C78D6D006A7689 /* YCMyViewController.xib in Resources */,
+				895EE0D720C78D1B006A7689 /* YCActivityViewController.xib in Resources */,
+				895EE0C320C77DFC006A7689 /* YCRegisterViewController.xib in Resources */,
 				893EE8F420995B7A00E449AD /* privacy.html in Resources */,
 				8998DB8A20B561880095696C /* ZLPhotoBrowser.bundle in Resources */,
 				F0CBFC791FAC593C00F9F3DB /* Main.storyboard in Resources */,
 				8915CFD320AEA30B00467E29 /* HHStatementViewController.xib in Resources */,
 				8998DB8920B561880095696C /* ZLPhotoActionSheet.xib in Resources */,
-				8915CFEB20AEDE5900467E29 /* HHLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1663,14 +1677,17 @@
 			files = (
 				893D3FC820B69D7200C71B33 /* HHTestViewController.m in Sources */,
 				F0FDAB7C1FAC802E0023F8EA /* AESCipher.m in Sources */,
-				8918682F2068ECAE00046B70 /* HHUserInfo.m in Sources */,
+				8918682F2068ECAE00046B70 /* YCUserInfo.m in Sources */,
 				8998DB8D20B561880095696C /* UIButton+EnlargeTouchArea.m in Sources */,
+				895EE0DB20C78D2F006A7689 /* YCChooseCarViewController.m in Sources */,
 				F0A3E1701FB05F8E00DD2E90 /* CommonUtils.m in Sources */,
-				8915CFD720AEA32200467E29 /* HHMyViewController.m in Sources */,
+				895EE0C720C77E6B006A7689 /* YCResetLoginPsdViewController.m in Sources */,
 				F07880881FCCFCC7009C2B64 /* UIActionSheet+BlocksKit.m in Sources */,
 				F0C5DB641FB9B848000681FD /* JinnLockViewController.m in Sources */,
 				893D3FBC20B69A1B00C71B33 /* STPhotoBrowserUI.m in Sources */,
 				8998DB9620B561880095696C /* ZLClipItem.m in Sources */,
+				895EE0D620C78D1B006A7689 /* YCActivityViewController.m in Sources */,
+				895EE0CB20C78079006A7689 /* YCLoginModel.m in Sources */,
 				899E6FA92084A7F7001B9416 /* BaseWebViewController.m in Sources */,
 				F078808E1FCCFCC7009C2B64 /* UIView+BlocksKit.m in Sources */,
 				8998DB9F20B561880095696C /* ZLPhotoConfiguration.m in Sources */,
@@ -1688,6 +1705,7 @@
 				F020EE711FC7C87C001E7FBF /* UIViewController+Ex.m in Sources */,
 				F0E6F0651FBECC9900819839 /* UIView+LayoutHelper.m in Sources */,
 				8998DB9220B561880095696C /* ZLEditVideoController.m in Sources */,
+				895EE0CE20C7808B006A7689 /* YCLoginModelManager.m in Sources */,
 				F0FDABF61FAC80BD0023F8EA /* ViewPager.m in Sources */,
 				8998DBA420B561880095696C /* ZLShowBigImgViewController.m in Sources */,
 				8998DB8E20B561880095696C /* UIImage+ZLPhotoBrowser.m in Sources */,
@@ -1698,8 +1716,6 @@
 				893D3FBE20B69A1B00C71B33 /* STAlertView.m in Sources */,
 				F0FDABE61FAC802F0023F8EA /* ImageUtil.m in Sources */,
 				F0E6F0631FBECC9900819839 /* UIImage+Rotate.m in Sources */,
-				8915CFEC20AEDE5900467E29 /* HHRegisterViewController.m in Sources */,
-				8915CFEA20AEDE5900467E29 /* HHLoginViewController.m in Sources */,
 				899E6FB02084A9C5001B9416 /* NJKWebViewProgressView.m in Sources */,
 				F0FDABDF1FAC802F0023F8EA /* BaseNavigationController.m in Sources */,
 				8998DBA020B561880095696C /* ZLPhotoManager.m in Sources */,
@@ -1717,7 +1733,6 @@
 				894CA9312060A8B100E40CEA /* MapManager.m in Sources */,
 				F07880821FCCFCC7009C2B64 /* NSURLConnection+BlocksKit.m in Sources */,
 				F078807B1FCCFCC7009C2B64 /* NSObject+BKBlockObservation.m in Sources */,
-				8915CFCD20AEA2DF00467E29 /* HHHomeViewController.m in Sources */,
 				F0A3E1731FB05F8E00DD2E90 /* Reachability.m in Sources */,
 				8998DB9C20B561880095696C /* ZLPhotoActionSheet.m in Sources */,
 				F0FDABE91FAC802F0023F8EA /* NSString+Json.m in Sources */,
@@ -1729,23 +1744,25 @@
 				F0A3E17C1FB06A1900DD2E90 /* MMDateView.m in Sources */,
 				F0C5DB4C1FB9B452000681FD /* JinnLockCircle.m in Sources */,
 				F07880201FCCFC20009C2B64 /* DSAuth.m in Sources */,
-				5608B13F208478750079E376 /* HHUpdateVersion.m in Sources */,
+				5608B13F208478750079E376 /* YCUpdateVersion.m in Sources */,
 				F0FDABE21FAC802F0023F8EA /* BaseViewController.m in Sources */,
 				891F92D12069E81900F00FED /* HHTool.m in Sources */,
 				F07880841FCCFCC7009C2B64 /* NSObject+A2DynamicDelegate.m in Sources */,
 				F0C5DB581FB9B7E2000681FD /* JinnLockSudoko.m in Sources */,
-				8915CFF020AEDE5900467E29 /* HHLoginModelManager.m in Sources */,
-				8918682C2068EC6400046B70 /* HHUserInfoManager.m in Sources */,
+				8918682C2068EC6400046B70 /* YCUserInfoManager.m in Sources */,
 				F0A3E1721FB05F8E00DD2E90 /* HttpRequstManager.m in Sources */,
 				F0E5BEC51FC2BF8A00C07EF0 /* PageSurveyView.m in Sources */,
 				F07880781FCCFCC7009C2B64 /* NSMutableSet+BlocksKit.m in Sources */,
 				F0FDABE51FAC802F0023F8EA /* Date.m in Sources */,
 				F0FDABDB1FAC802F0023F8EA /* WebViewJavascriptBridgeBase.m in Sources */,
+				895EE0E520C78D6D006A7689 /* YCMyViewController.m in Sources */,
 				8998DB9A20B561880095696C /* ZLImageEditTool.m in Sources */,
+				895EE0C220C77DFC006A7689 /* YCRegisterViewController.m in Sources */,
 				8998DB9B20B561880095696C /* ZLNoAuthorityViewController.m in Sources */,
 				8998DB9720B561880095696C /* ZLDrawItem.m in Sources */,
 				F0787FF91FCC3627009C2B64 /* PickerTool.m in Sources */,
 				F0FDABE11FAC802F0023F8EA /* BaseTableViewCell.m in Sources */,
+				895EE0BD20C77AD8006A7689 /* YCLoginViewController.m in Sources */,
 				F0FDABCF1FAC802F0023F8EA /* SGPageContentView.m in Sources */,
 				F07880731FCCFCC7009C2B64 /* NSMapTable+BlocksKit.m in Sources */,
 				8998DB9920B561880095696C /* ZLFilterTool.m in Sources */,
@@ -1767,6 +1784,7 @@
 				8998DBA520B561880095696C /* ZLThumbnailViewController.m in Sources */,
 				F0FDABE31FAC802F0023F8EA /* UITabBar+Badge.m in Sources */,
 				F07880701FCCFCC7009C2B64 /* NSDictionary+BlocksKit.m in Sources */,
+				895EE0E020C78D4D006A7689 /* YCHomeViewController.m in Sources */,
 				F07880811FCCFCC7009C2B64 /* NSCache+BlocksKit.m in Sources */,
 				F0E6F0641FBECC9900819839 /* UIView+Additions.m in Sources */,
 				F0A3E1591FB0387200DD2E90 /* MD5.m in Sources */,
@@ -1774,7 +1792,6 @@
 				8998DB9420B561880095696C /* ZLForceTouchPreviewController.m in Sources */,
 				8915CFF120AEDE5900467E29 /* WIFISetupHelper.m in Sources */,
 				F0FDABEA1FAC802F0023F8EA /* NSUserDefaultTools.m in Sources */,
-				8915CFEF20AEDE5900467E29 /* HHLoginModel.m in Sources */,
 				F078807E1FCCFCC7009C2B64 /* NSTimer+BlocksKit.m in Sources */,
 				F07880741FCCFCC7009C2B64 /* NSMutableArray+BlocksKit.m in Sources */,
 				893D3FBF20B69A1B00C71B33 /* STIndicatorView.m in Sources */,
@@ -1782,7 +1799,6 @@
 				8915CFD220AEA30B00467E29 /* HHStatementViewController.m in Sources */,
 				8998DB9120B561880095696C /* ZLCustomCamera.m in Sources */,
 				F07880831FCCFCC7009C2B64 /* NSObject+A2BlockDelegate.m in Sources */,
-				8915CFEE20AEDE5900467E29 /* HHResetLoginPsdViewController.m in Sources */,
 				8998DB8820B561880095696C /* NSBundle+ZLPhotoBrowser.m in Sources */,
 				F0A3E1711FB05F8E00DD2E90 /* HHPopupView.m in Sources */,
 				F0FDABDA1FAC802F0023F8EA /* WebViewJavascriptBridge.m in Sources */,

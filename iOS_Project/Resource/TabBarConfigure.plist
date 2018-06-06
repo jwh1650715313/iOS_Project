@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>class</key>
-		<string>HHHomeViewController</string>
+		<string>YCHomeViewController</string>
 		<key>title</key>
 		<string>首页</string>
 		<key>image</key>
@@ -16,9 +16,9 @@
 	</dict>
 	<dict>
 		<key>class</key>
-		<string>HHStatementViewController</string>
+		<string>YCChooseCarViewController</string>
 		<key>title</key>
-		<string>报表</string>
+		<string>选车</string>
 		<key>image</key>
 		<string>huankuan_normal</string>
 		<key>selectedImage</key>
@@ -28,7 +28,19 @@
 	</dict>
 	<dict>
 		<key>class</key>
-		<string>HHMyViewController</string>
+		<string>YCActivityViewController</string>
+		<key>title</key>
+		<string>活动</string>
+		<key>image</key>
+		<string>huankuan_normal</string>
+		<key>selectedImage</key>
+		<string>huankuan_pressed</string>
+		<key>badgeValue</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>YCMyViewController</string>
 		<key>title</key>
 		<string>我的</string>
 		<key>image</key>

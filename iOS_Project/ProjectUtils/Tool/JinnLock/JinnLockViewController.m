@@ -12,10 +12,10 @@
 #import "JinnLockConfig.h"
 #import "BaseTabBarController.h"
 #import "AppDelegate.h"
-#import "HHLoginModelManager.h"
+
 #import "TDTouchID.h"
 
-#import "HHLoginViewController.h"
+#import "YCLoginViewController.h"
 
 typedef NS_ENUM(NSInteger, JinnLockStep)
 {
@@ -205,7 +205,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
     UIImageView *headimage = [[UIImageView alloc] init];
     //imgvv.backgroundColor = [UIColor redColor];
     
-    NSString  *imgUrl=[NSString stringWithFormat:@"%@%@",QiNiuYunHostName,[HHUserInfoManager getInfo].photo];
+    NSString  *imgUrl=@"";
     
     [headimage sd_setImageWithURL:[NSURL URLWithString:imgUrl]  placeholderImage:[UIImage imageNamed:@"headimage"]];
     
@@ -235,7 +235,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         make.height.mas_equalTo(20);
     }];
     
-    phonelabel.text=[HHUserInfoManager getInfo].phone.length>0? [[HHUserInfoManager getInfo].phone stringByReplacingCharactersInRange:NSMakeRange(3, 4)  withString:@"****"]:@"";;
+    phonelabel.text=[YCUserInfoManager getInfo].phone.length>0? [[YCUserInfoManager getInfo].phone stringByReplacingCharactersInRange:NSMakeRange(3, 4)  withString:@"****"]:@"";;
     
     
     //重新设置
@@ -480,7 +480,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
             if (_countt < 1) {
                 
             
-                [NSUserDefaultTools setStringValueWithKey:@"" key:[HHUserInfoManager getInfo].appUserId];
+                [NSUserDefaultTools setStringValueWithKey:@"" key:[YCUserInfoManager getInfo].appUserId];
                 
                 
                 [self gotoLoginViewController];
@@ -631,17 +631,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
                 
                 appDelegate.window.rootViewController = [BaseTabBarController new];
                 
-                if ([CommonUtils IsOkString:self.info.token]) {
-                    
-                    [HHLoginModelManager saveInfo:self.info];
-                    
-                    [HHUserInfoManager saveInfo:self.info.userInfo];
-                    
-                    
-                    [NSUserDefaultTools setStringValueWithKey:passcode key:self.info.userInfo.appUserId];
-                    
-                }
-                
+             
                 
                 
             }
@@ -660,7 +650,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         case JinnLockStepModifyReOld:
         {
             
-            NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[HHUserInfoManager getInfo].appUserId];
+            NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[YCUserInfoManager getInfo].appUserId];
             
 //            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
             if ([passcode isEqualToString:psd])
@@ -716,7 +706,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         {
 //            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
             
-             NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[HHUserInfoManager getInfo].appUserId];
+             NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[YCUserInfoManager getInfo].appUserId];
             
             if([passcode isEqualToString:psd])
             
@@ -744,7 +734,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
         case JinnLockStepRemoveOld:
         case JinnLockStepRemoveReOld:
         {
-             NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[HHUserInfoManager getInfo].appUserId];
+             NSString  *psd=[NSUserDefaultTools getStringValueWithKey:[YCUserInfoManager getInfo].appUserId];
             
 //            if ([passcode isEqualToString:[JinnLockTool currentGesturePasscode]])
             
@@ -841,7 +831,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
 #pragma mark-忘记手势
 -(void)forgetGestureClick
 {
-    BaseNavigationController *NavigationVc=[[BaseNavigationController alloc]initWithRootViewController:[HHLoginViewController new]];
+    BaseNavigationController *NavigationVc=[[BaseNavigationController alloc]initWithRootViewController:[YCLoginViewController new]];
     
     [self presentViewController:NavigationVc animated:YES completion:nil];
     
@@ -851,7 +841,7 @@ typedef NS_ENUM(NSInteger, JinnLockStep)
 #pragma mark-密码登录
 -(void)PsdLoginClick
 {
-    BaseNavigationController *NavigationVc=[[BaseNavigationController alloc]initWithRootViewController:[HHLoginViewController new]];
+    BaseNavigationController *NavigationVc=[[BaseNavigationController alloc]initWithRootViewController:[YCLoginViewController new]];
     
     [self presentViewController:NavigationVc animated:YES completion:nil];
 }

@@ -9,7 +9,7 @@
 #import "JinnLockTool.h"
 #import "JinnLockSudoko.h"
 #import "JinnLockIndicator.h"
-#import "HHLoginModel.h"
+
 /**
  控制器类型
  */
@@ -67,6 +67,5 @@ typedef NS_ENUM(NSInteger, JinnLockAppearMode)
                             type:(JinnLockType)type
                       appearMode:(JinnLockAppearMode)appearMode;
 
-@property (nonatomic,strong) HHLoginModel *info;
 
 @end

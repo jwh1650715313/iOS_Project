@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "HHLoginViewController.h"
 
 @interface BaseViewController ()
 
@@ -125,9 +124,7 @@
 //返回
 - (void)gotoLoginViewController {
     
-      HHLoginViewController  *loginVc=[HHLoginViewController new];
-    
-      [UIApplication sharedApplication].keyWindow.rootViewController = loginVc;
+ 
    
     
 }

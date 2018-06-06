@@ -106,7 +106,7 @@
  */
 #define kappVersion       [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
-#define KToken  [HHLoginModelManager getInfo].token
+#define KToken  @"KToken"
 
 #define Kplatform  @"iOS"
 

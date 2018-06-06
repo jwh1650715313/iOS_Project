@@ -182,9 +182,9 @@
             
             [[UIApplication sharedApplication] unregisterForRemoteNotifications];
             
-            [HHUserInfoManager deleteInfo];
+            [YCUserInfoManager deleteInfo];
             
-            [HHLoginModelManager deleteInfo];
+            [YCLoginModelManager deleteInfo];
             
             
             
