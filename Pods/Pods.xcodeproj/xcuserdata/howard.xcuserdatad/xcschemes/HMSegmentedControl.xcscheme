@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E66B362AE57238557E51E1B585B5C93"
+               BlueprintIdentifier = "B4CEB0284B4209C3EB1D2921056254BE"
+               BuildableName = "libHMSegmentedControl.a"
                BlueprintName = "HMSegmentedControl"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libHMSegmentedControl.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

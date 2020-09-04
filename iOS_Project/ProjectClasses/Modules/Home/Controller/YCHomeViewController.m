@@ -7,7 +7,6 @@
 //
 
 #import "YCHomeViewController.h"
-
 @interface YCHomeViewController ()
 
 @end
@@ -17,6 +16,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self setRightItemWithTitle:@"测试" selector:@selector(testClick)];
+}
+
+-(void)testClick{
+    
+    [[WHSchemeHandler currentHandler]handleUrl:@"https://www.baidu.com" animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

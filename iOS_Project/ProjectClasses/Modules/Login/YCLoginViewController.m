@@ -424,75 +424,48 @@
     
     
     
-    if (_phoneTdf.text.length!=11) {
-        
-        [self showCenterTip:@"请正确输入手机号"];
-        
-        return;
-    }else if (self.psdTdf.text.length<6 || self.psdTdf.text.length>16){
-        
-        [self showCenterTip:@"请正确输入密码"];
-        
-        return;
-    }
+//    if (_phoneTdf.text.length!=11) {
+//
+//        [self showCenterTip:@"请正确输入手机号"];
+//
+//        return;
+//    }else if (self.psdTdf.text.length<6 || self.psdTdf.text.length>16){
+//
+//        [self showCenterTip:@"请正确输入密码"];
+//
+//        return;
+//    }
     
+    /* 测试
+    NSMutableDictionary *Mdic = [NSMutableDictionary dictionary];
+       
+       NSDictionary *dic=@{@"user_phone":kEnsureNotNil(_phoneTdf.text)
+                           ,@"password":kEnsureNotNil(_psdTdf.text)
+                           ,@"registration_id":kEnsureNotNil(@"wqewqeqwwdacs")
+                           ,@"type":@"3"
+                           };
+       
+       Mdic=dic.mutableCopy;
+       
+       [self showProgress];
     
-    NSDictionary *dic=@{@"phone":kEnsureNotNil(_phoneTdf.text)
-                        ,@"password":kEnsureNotNil(_psdTdf.text)
-                        };
+    [self hideProgress];
     
-    
-    [self showProgress];
-    
-    
-    WEAKSELF
-    [self.requestManager postRequestWithUrl:login params:dic success:^(id response, NSInteger resposeCode) {
+    [self.requestManager postRequestWithUrl:@"/api/apiPhoneLogin" params:Mdic success:^(id response, NSInteger resposeCode) {
         
-        
-        
-        
-        
-        [weakSelf hideProgress];
-        
-        
-        NSDictionary *dic = [response objectForKey:@"data"];
-        YCLoginModel *uInfo = [YCLoginModel mj_objectWithKeyValues:dic];
-        
-        
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        
-        NSString  *psd=@"123456";
-        
-        if (psd.length>0) {
-            
-            
-            [YCLoginModelManager saveInfo:uInfo];
-            
-        
-            [appDelegate enterApp];
-            
-            return ;
-        }
-        
-        
-      
-        
+        NSLog(@"====%@",response);
         
     } failure:^(NSError *error, NSString *errorMsg) {
         
         
+         [self hideProgress];
         
-        [weakSelf hideProgress];
+         [self showCenterTip:errorMsg];
         
+        NSLog(@"%@",error);
         
-        if ([errorMsg isKindOfClass:[NSString class]]) {
-            [weakSelf showCenterTip:errorMsg];
-        } else {
-            [weakSelf showProgress:@"当前网络不稳定"];
-        }
     }];
-    
+    */
     
     
 }
@@ -527,14 +500,8 @@
     
     
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"privacy" ofType:@"html"];
-    
-    BaseWebViewController  *vc=[BaseWebViewController new];
-    
-    vc.webUrl=path;
-    
-    [self.navigationController pushViewController:vc animated:YES];
-    
+   
+
     
     
 }

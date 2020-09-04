@@ -29,7 +29,6 @@ static NSString *identifier = @"WIFISetupCell";
     NSLog(@"当前HOST：%@", HostName);
     
     
-    NSLog(@"当前七牛云HOST：%@", QiNiuYunHostName);
     
 }
 
@@ -43,14 +42,7 @@ static NSString *identifier = @"WIFISetupCell";
         [temp addObject:dic.allValues.firstObject];
     }
     
-    NSMutableArray *temp1 = [@[] mutableCopy];
-    for (NSDictionary *dic in QiNiuYunHOST_MENUS) {
-        [temp1 addObject:dic.allValues.firstObject];
-    }
-    
-    
-    
-    
+
     if (![temp containsObject:HostName]) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:HOST_KEY];
         
@@ -67,24 +59,6 @@ static NSString *identifier = @"WIFISetupCell";
     }
     
     
-    //七牛云
-    if (![temp1 containsObject:QiNiuYunHostName]) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:QiNiuYunHOST_KEY];
-        
-        
-#ifdef DEBUG
-        QiNiuYunCACHE_HOST(temp1.firstObject) // DEV默认环境设置
-        
-        
-#else
-        QiNiuYunCACHE_HOST(temp1.lastObject) // REREAS默认环境设置
-#endif
-        
-        NSLog(@"当前七牛云HOST：%@", QiNiuYunHostName);
-        
-        
-        
-    }
     
 }
 
@@ -157,17 +131,9 @@ static NSString *identifier = @"WIFISetupCell";
     CACHE_HOST(dic.allValues[indexPath.row]);
     
     
-    NSMutableArray *temp1 = [@[] mutableCopy];
-    for (NSDictionary *dic in QiNiuYunHOST_MENUS) {
-        [temp1 addObject:dic.allValues.firstObject];
-    }
-    
+   
   
-    QiNiuYunCACHE_HOST(indexPath.section==0?temp1.firstObject:temp1.lastObject);
-    
-    NSLog(@"当前七牛云HOST：%@", QiNiuYunHostName);
-    
-    [self.km_tableView reloadData];
+   
 }
 
 

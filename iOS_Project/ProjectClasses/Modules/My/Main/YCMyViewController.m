@@ -17,6 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self setRightItemWithTitle:@"网络" selector:@selector(netClick)];
+}
+
+-(void)netClick{
+    
+    [self pushViewControllerWithName:@"WIFISetupHelper"];
 }
 
 - (void)didReceiveMemoryWarning {

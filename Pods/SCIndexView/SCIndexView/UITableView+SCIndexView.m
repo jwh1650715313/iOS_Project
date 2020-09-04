@@ -4,9 +4,7 @@
 #import "SCIndexView.h"
 
 @interface SCWeakProxy : NSObject
-
-@property (nonatomic, weak) SCIndexView *indexView;
-
+@property (nonatomic, weak) id target;
 @end
 @implementation SCWeakProxy
 @end
@@ -23,8 +21,7 @@
 
 + (void)load
 {
-    [self swizzledSelector:@selector(SCIndexView_didMoveToSuperview) originalSelector:@selector(didMoveToSuperview)];
-    [self swizzledSelector:@selector(SCIndexView_removeFromSuperview) originalSelector:@selector(removeFromSuperview)];
+    [self swizzledSelector:@selector(SCIndexView_layoutSubviews) originalSelector:@selector(layoutSubviews)];
 }
 
 + (void)swizzledSelector:(SEL)swizzledSelector originalSelector:(SEL)originalSelector
@@ -47,29 +44,22 @@
     }
 }
 
-#pragma Add and Remove View
-
-- (void)SCIndexView_didMoveToSuperview
-{
-    [self SCIndexView_didMoveToSuperview];
-    if (self.sc_indexViewDataSource.count && !self.sc_indexView && self.superview) {
-        SCIndexView *indexView = [[SCIndexView alloc] initWithTableView:self configuration:self.sc_indexViewConfiguration];
-        indexView.translucentForTableViewInNavigationBar = self.sc_translucentForTableViewInNavigationBar;
-        indexView.delegate = self;
-        indexView.dataSource = self.sc_indexViewDataSource;
-        [self.superview addSubview:indexView];
-        
-        self.sc_indexView = indexView;
+- (void)SCIndexView_layoutSubviews {
+    [self SCIndexView_layoutSubviews];
+    
+    if (!self.sc_indexView) {
+        return;
     }
-}
-
-- (void)SCIndexView_removeFromSuperview
-{
-    if (self.sc_indexView) {
+    if (self.superview && !self.sc_indexView.superview) {
+        [self.superview addSubview:self.sc_indexView];
+    }
+    else if (!self.superview && self.sc_indexView.superview) {
         [self.sc_indexView removeFromSuperview];
-        self.sc_indexView = nil;
     }
-    [self SCIndexView_removeFromSuperview];
+    if (!CGRectEqualToRect(self.sc_indexView.frame, self.frame)) {
+        self.sc_indexView.frame = self.frame;
+    }
+    [self.sc_indexView refreshCurrentSection];
 }
 
 #pragma mark - SCIndexViewDelegate
@@ -90,21 +80,34 @@
     }
 }
 
+#pragma mark - Public Methods
+
+- (void)sc_refreshCurrentSectionOfIndexView {
+    [self.sc_indexView refreshCurrentSection];
+}
+
+#pragma mark - Private Methods
+
+- (SCIndexView *)createIndexView {
+    SCIndexView *indexView = [[SCIndexView alloc] initWithTableView:self configuration:self.sc_indexViewConfiguration];
+    indexView.translucentForTableViewInNavigationBar = self.sc_translucentForTableViewInNavigationBar;
+    indexView.startSection = self.sc_startSection;
+    indexView.delegate = self;
+    return indexView;
+}
+
 #pragma mark - Getter and Setter
 
 - (SCIndexView *)sc_indexView
 {
-    SCWeakProxy *weakProxy = objc_getAssociatedObject(self, @selector(sc_indexView));
-    return weakProxy.indexView;
+    return objc_getAssociatedObject(self, @selector(sc_indexView));
 }
 
 - (void)setSc_indexView:(SCIndexView *)sc_indexView
 {
     if (self.sc_indexView == sc_indexView) return;
     
-    SCWeakProxy *weakProxy = [SCWeakProxy new];
-    weakProxy.indexView = sc_indexView;
-    objc_setAssociatedObject(self, @selector(sc_indexView), weakProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(sc_indexView), sc_indexView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (SCIndexViewConfiguration *)sc_indexViewConfiguration
@@ -125,14 +128,17 @@
 
 - (id<SCTableViewSectionIndexDelegate>)sc_indexViewDelegate
 {
-    return objc_getAssociatedObject(self, @selector(sc_indexViewDelegate));
+    SCWeakProxy *weakProxy = objc_getAssociatedObject(self, @selector(sc_indexViewDelegate));
+    return weakProxy.target;
 }
 
 - (void)setSc_indexViewDelegate:(id<SCTableViewSectionIndexDelegate>)sc_indexViewDelegate
 {
     if (self.sc_indexViewDelegate == sc_indexViewDelegate) return;
     
-    objc_setAssociatedObject(self, @selector(sc_indexViewDelegate), sc_indexViewDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    SCWeakProxy *weakProxy = [SCWeakProxy new];
+    weakProxy.target = sc_indexViewDelegate;
+    objc_setAssociatedObject(self, @selector(sc_indexViewDelegate), weakProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)sc_translucentForTableViewInNavigationBar
@@ -157,24 +163,31 @@
 - (void)setSc_indexViewDataSource:(NSArray<NSString *> *)sc_indexViewDataSource
 {
     if (self.sc_indexViewDataSource == sc_indexViewDataSource) return;
-    objc_setAssociatedObject(self, @selector(sc_indexViewDataSource), sc_indexViewDataSource, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(sc_indexViewDataSource), sc_indexViewDataSource.copy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
-    if (!sc_indexViewDataSource || sc_indexViewDataSource.count == 0) {
-        [self.sc_indexView removeFromSuperview];
-        self.sc_indexView = nil;
-        return;
+    if (sc_indexViewDataSource.count > 0) {
+        if (!self.sc_indexView) {
+            self.sc_indexView = [self createIndexView];
+            [self.superview addSubview:self.sc_indexView];
+        }
+        self.sc_indexView.dataSource = sc_indexViewDataSource.copy;
+        self.sc_indexView.hidden = NO;
     }
-    
-    if (!self.sc_indexView && self.superview) {
-        SCIndexView *indexView = [[SCIndexView alloc] initWithTableView:self configuration:self.sc_indexViewConfiguration];
-        indexView.translucentForTableViewInNavigationBar = self.sc_translucentForTableViewInNavigationBar;
-        indexView.delegate = self;
-        [self.superview addSubview:indexView];
+    else {
+        self.sc_indexView.hidden = YES;
+    }
+}
 
-        self.sc_indexView = indexView;
-    }
+- (NSUInteger)sc_startSection {
+    NSNumber *number = objc_getAssociatedObject(self, @selector(sc_startSection));
+    return number.unsignedIntegerValue;
+}
+
+- (void)setSc_startSection:(NSUInteger)sc_startSection {
+    if (self.sc_startSection == sc_startSection) return;
     
-    self.sc_indexView.dataSource = sc_indexViewDataSource.copy;
+    objc_setAssociatedObject(self, @selector(sc_startSection), @(sc_startSection), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self.sc_indexView.startSection = sc_startSection;
 }
 
 @end

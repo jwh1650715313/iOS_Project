@@ -12,12 +12,6 @@
 
 //定义各种key
 
-#define kNotifyHUDProgressHide       @"kNotifyHUDProgressHide"//隐藏loading的通知
-
-#define kNotifyRefreshCheckHeight       @"kNotifyRefreshCheckHeight"//刷新审核步骤的cell
-
-#define kNotification_RepaymentVcRefresh       @"kNotification_RepaymentVcRefresh"//刷新审核步骤的cell
-
 
 //通知宏定义
 //登录状态改变通知
@@ -53,6 +47,16 @@ typedef void(^IndexBlock)(NSInteger index);
 //常用cell
 
 #define kBaseTextTableViewCell @"BaseTextTableViewCell"
+
+
+// 是否返回刷新
+#define URL_QUERY_KEY_IS_RETURN_REFRESH             @"_is_return_refresh"
+
+// 是否页面可回弹
+#define URL_QUERY_KEY_IS_SCROLL_BOUNCES             @"_is_scroll_bounces"
+
+// 页面内跳转
+#define URL_QUERY_KEY_IS_INSIDE_PAGE                @"_is_inside_the_page"
 
 
 #endif /* ConfigDefinition_h */

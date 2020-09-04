@@ -34,7 +34,7 @@
 {
     
     [super viewSafeAreaInsetsDidChange];
-    NSLog(@"这是iphonex");
+   
     
 }
 

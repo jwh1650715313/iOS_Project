@@ -361,43 +361,7 @@
 {
     
     
-    NSDictionary  *dic=@{@"phone":kEnsureNotNil(KstringByReplace(self.phoneTdf.text))
-                         ,@"verificationCode":kEnsureNotNil(KstringByReplace(self.codeTdf.text))
-                         ,@"newPassword":kEnsureNotNil(KstringByReplace(_psdTdf.text))
-                         };
     
-    
-    [self showProgress];
-    
-    
-    [self.requestManager  postRequestWithUrl:resetPassword params:dic success:^(id response, NSInteger resposeCode) {
-        
-        
-        [self hideProgress];
-        
-        [self showCenterTip:@"登录密码重置成功"];
-        
-        
-        if (self.presentingViewController) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        
-        
-        
-        
-    } failure:^(NSError *error, NSString *errorMsg) {
-        
-        [self hideProgress];
-        
-        if ([errorMsg isKindOfClass:[NSString class]]) {
-            [self showCenterTip:errorMsg];
-        } else {
-            [self showCenterTip:@"当前网络不稳定"];
-        }
-        
-    }];
     
     
     
@@ -439,27 +403,6 @@
         
         
         
-        WEAKSELF
-        
-        //获取 验证码的请求
-        [self.requestManager getRequestWithUrl:getRegisterCode params:@{@"phone":kEnsureNotNil(self.phoneTdf.text),@"type":@"1"} success:^(id response, NSInteger resposeCode) {
-            
-            
-            [weakSelf hideProgress];
-            
-            
-        } failure:^(NSError *error, NSString *errorMsg) {
-            
-            [weakSelf hideProgress];
-            
-            if ([errorMsg isKindOfClass:[NSString class]]) {
-                [weakSelf showCenterTip:errorMsg];
-            } else {
-                [weakSelf showCenterTip:@"当前网络不稳定"];
-            }
-            
-            
-        }];
     }
 }
 

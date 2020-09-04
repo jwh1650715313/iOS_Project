@@ -18,7 +18,7 @@
 
 //第三方框架（从Github下载的）
 
-#import "UIImageView+WebCache.h"R
+#import "UIImageView+WebCache.h"
 #import "MJExtension.h"
 #import "MJRefresh.h"
 #import "AFNetworking.h"
@@ -28,7 +28,8 @@
 #import "Masonry.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "SDCycleScrollView.h"
-#import "ZLPhotoActionSheet.h"//图片选择器
+#import "SDAutoLayout.h"
+#import "Addition.h"
 //#import "LBPhotoBrowserManager.h"//图片浏览器
 
 //类别
@@ -68,6 +69,8 @@
 #import "HHTool.h"
 #import "YCLoginModel.h"
 #import "YCLoginModelManager.h"
+#import "YCLoginViewController.h"
+#import "CCAlertManager.h"
 //各种基类
 
 #import  "BaseTabBarController.h"
@@ -77,15 +80,16 @@
 #import  "BaseTableViewCell.h"
 #import  "BaseTextTableViewCell.h"
 #import  "JinnLockViewController.h"//手势密码
-#import  "BaseWebViewController.h"
 #import  "BaseViewController+XHPhoto.h"
+#import  "WIFISetupHelper.h"
+#import  "WHSchemeHandler.h"
+
 //入口
 #import  "AppDelegate.h"
 
 
 //各种第三方库(比如腾讯的bugly，友盟)
 #import <Bugly/Bugly.h>
-#import <QiniuSDK.h>//七牛云
 #import <UMSocialCore/UMSocialCore.h>
 
 #endif /* ThirdLibs_h */

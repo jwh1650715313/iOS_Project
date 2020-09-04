@@ -1,42 +1,63 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - Addition (1.4.0):
+    - Addition/NSArray (= 1.4.0)
+    - Addition/NSData (= 1.4.0)
+    - Addition/NSDate (= 1.4.0)
+    - Addition/NSDictionary (= 1.4.0)
+    - Addition/NSMutableDictionary (= 1.4.0)
+    - Addition/NSObject (= 1.4.0)
+    - Addition/NSString (= 1.4.0)
+    - Addition/UIColor (= 1.4.0)
+    - Addition/UIFont (= 1.4.0)
+    - Addition/UIImage (= 1.4.0)
+    - Addition/UIScrollView (= 1.4.0)
+    - Addition/UIView (= 1.4.0)
+  - Addition/NSArray (1.4.0)
+  - Addition/NSData (1.4.0)
+  - Addition/NSDate (1.4.0)
+  - Addition/NSDictionary (1.4.0)
+  - Addition/NSMutableDictionary (1.4.0)
+  - Addition/NSObject (1.4.0):
+    - Addition/NSString
+  - Addition/NSString (1.4.0):
+    - Addition/NSData
+  - Addition/UIColor (1.4.0)
+  - Addition/UIFont (1.4.0)
+  - Addition/UIImage (1.4.0)
+  - Addition/UIScrollView (1.4.0)
+  - Addition/UIView (1.4.0)
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - AMapFoundation (1.4.3)
-  - AMapLocation (2.6.0):
-    - AMapFoundation (~> 1.4)
-  - FLEX (2.4.0)
   - GPUImage (0.1.7)
-  - HappyDNS (0.3.12)
-  - HMSegmentedControl (1.5.4)
-  - IQKeyboardManager (5.0.6)
-  - Masonry (1.0.2)
-  - MBProgressHUD (1.0.0)
-  - MJExtension (3.0.13)
-  - MJRefresh (3.1.15)
+  - HMSegmentedControl (1.5.6)
+  - IQKeyboardManager (6.5.6)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - MJExtension (3.2.2)
+  - MJRefresh (3.5.0)
   - MMPopupView (1.7.2):
     - Masonry
-  - Qiniu (7.2.3):
-    - HappyDNS (~> 0.3)
-  - SCIndexView (2.1.0)
-  - SDCycleScrollView (1.75):
-    - SDWebImage (>= 4.0.0)
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
-  - UITableView+FDTemplateLayoutCell (1.6)
+  - SCIndexView (2.2.3)
+  - SDAutoLayout (2.2.1)
+  - SDCycleScrollView (1.80):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.9.0):
+    - SDWebImage/Core (= 5.9.0)
+  - SDWebImage/Core (5.9.0)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
   - UMengUShare/Core (6.4.8.2):
     - UMengUShare/Network
   - UMengUShare/Network (6.4.8.2)
@@ -50,48 +71,67 @@ PODS:
   - UMengUShare/Social/WeChat (6.4.8.2):
     - UMengUShare/Core
     - UMengUShare/Social/ReducedWeChat
+  - WebViewJavascriptBridge (6.0.3)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.1.0)
-  - AMapLocation
-  - FLEX (~> 2.0)
+  - Addition
+  - AFNetworking
   - GPUImage
   - HMSegmentedControl
-  - IQKeyboardManager (~> 5.0.2)
-  - Masonry (~> 1.0.2)
-  - MBProgressHUD (~> 1.0.0)
-  - MJExtension (~> 3.0.13)
-  - MJRefresh (~> 3.1.12)
-  - MMPopupView (~> 1.7.2)
-  - Qiniu (~> 7.1)
+  - IQKeyboardManager
+  - Masonry
+  - MBProgressHUD
+  - MJExtension
+  - MJRefresh
+  - MMPopupView
   - SCIndexView
+  - SDAutoLayout
   - SDCycleScrollView
   - SDWebImage
-  - UITableView+FDTemplateLayoutCell (~> 1.5.beta)
+  - "UITableView+FDTemplateLayoutCell (~> 1.5.beta)"
   - UMengUShare/Social/QQ
   - UMengUShare/Social/WeChat
+  - WebViewJavascriptBridge
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Addition
+    - AFNetworking
+    - GPUImage
+    - HMSegmentedControl
+    - IQKeyboardManager
+    - Masonry
+    - MBProgressHUD
+    - MJExtension
+    - MJRefresh
+    - MMPopupView
+    - SCIndexView
+    - SDAutoLayout
+    - SDCycleScrollView
+    - SDWebImage
+    - "UITableView+FDTemplateLayoutCell"
+    - UMengUShare
+    - WebViewJavascriptBridge
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AMapFoundation: 973682cfe60b92efd73a8ef8f1144fa0fa8e1296
-  AMapLocation: 55116a2c8956eab7550cbb56e989aa5cdcc424e3
-  FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
+  Addition: 81d09be3c7a19815ca17ae5baa5a93f8af5dbd03
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  HappyDNS: 691a3041128055d09866f86e6e9ca90f24da1f18
-  HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
-  IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
-  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJExtension: 5932755f451458eefa24239358817f8d291240c7
-  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
+  HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
-  Qiniu: ae0fea1cc379fae1560d8748ac537e0fbeb8626e
-  SCIndexView: 11a20f0fb1d0e0e1b8a0a87d3102c68afa0725e6
-  SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
-  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  SCIndexView: 992b56c3c7743bd7799bb43e764d42aef02038d9
+  SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
+  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
+  SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
+  WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 999780b6fd6b24ced323a682ece1a0fbc12951a7
+PODFILE CHECKSUM: aa9660fb2063bb25d90a6b9793498022ae66ac12
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.9.3

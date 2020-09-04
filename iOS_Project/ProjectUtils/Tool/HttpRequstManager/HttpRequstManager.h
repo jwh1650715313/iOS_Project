@@ -28,28 +28,6 @@ typedef void(^FailureBlockCode)(NSError *error, NSString *errorMsg,NSInteger cod
                    success:(SuccessBlock)success
                    failure:(FailureBlock)failure;
 
-
-
-
-
-
-
-//POST,设置body
-- (void)postRequestWithBodyUrl:(NSString *)url
-                    params:(id)params
-                   success:(SuccessBlock)success
-                   failure:(FailureBlock)failure;
-
-
-
-//POST,设置body包含code
-- (void)postRequestWithBodyUrl:(NSString *)url
-                        params:(id)params
-                       success:(SuccessBlock)success
-                       failureCode:(FailureBlockCode)failure;
-
-
-
 //PUT
 - (void)putRequestWithUrl:(NSString *)url
                    params:(id)params

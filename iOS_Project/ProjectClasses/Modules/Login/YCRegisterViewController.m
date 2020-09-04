@@ -451,41 +451,6 @@
 -(void)registerAction
 {
     
-    [self showProgress];
-    
-    WEAKSELF
-    
-    
-    //用户注册
-    NSDictionary  *dic=@{@"phone":kEnsureNotNil(KstringByReplace(_phoneTdf.text))
-                         ,@"password":kEnsureNotNil(KstringByReplace(_psdTdf.text))
-                         ,@"registerCode":kEnsureNotNil(KstringByReplace(_codeTdf.text))
-                         };
-    
-    
-    [self.requestManager postRequestWithUrl:register params:dic success:^(id response, NSInteger resposeCode) {
-        
-        [weakSelf hideProgress];
-        
-        //注册成功后到登录页面
-        if (weakSelf.presentingViewController) {
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }
-        
-    } failure:^(NSError *error, NSString *errorMsg) {
-        
-        [weakSelf hideProgress];
-        
-        if ([errorMsg isKindOfClass:[NSString class]]) {
-            [weakSelf showCenterTip:errorMsg];
-        } else {
-            [weakSelf showCenterTip:@"当前网络不稳定"];
-        }
-        
-        
-    }];
     
     
     
@@ -521,31 +486,7 @@
         addDjsTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
         
         
-        [self showProgress];
-        
-        WEAKSELF
-        
-        
-        
-        //获取 验证码的请求
-        [self.requestManager getRequestWithUrl:getRegisterCode params:@{@"phone":kEnsureNotNil(KstringByReplace(_phoneTdf.text)),@"type":@"0"} success:^(id response, NSInteger resposeCode) {
-            
-            
-            [weakSelf hideProgress];
-            
-            
-        } failure:^(NSError *error, NSString *errorMsg) {
-            
-            [weakSelf hideProgress];
-            
-            if ([errorMsg isKindOfClass:[NSString class]]) {
-                [weakSelf showCenterTip:errorMsg];
-            } else {
-                [weakSelf showCenterTip:@"当前网络不稳定"];
-            }
-            
-            
-        }];
+       
         
         
     }
@@ -556,27 +497,14 @@
 //《后河车贷用户注册协议》
 -(void)hhprotocolAction
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"useragreement" ofType:@"html"];
-    
-    BaseWebViewController  *vc=[BaseWebViewController new];
-    
-    vc.webUrl=path;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+   
 }
 
 
 //《后河车贷隐私政策》
 -(void)hhpolicyAction
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"privacy" ofType:@"html"];
-    
-    BaseWebViewController  *vc=[BaseWebViewController new];
-    
-    vc.webUrl=path;
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
+    }
 
 
 #pragma mark-私有的方法

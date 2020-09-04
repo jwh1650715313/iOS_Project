@@ -34,23 +34,21 @@
     if (!_sessionManager) {
         //主Url 可以封装起来统一管理,也可以直接写在GET参数里单独管理
         NSURL *baseUrl = [NSURL URLWithString:HostName];
-        //AFHTTPSessionManager 创建一个网络请求
-        _sessionManager = [[AFHTTPSessionManager manager] initWithBaseURL:baseUrl];
-        // Requests 请求Header参数
-        _sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    
-        _sessionManager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"application/json",@"text/javascript",@"text/json",@"text/plain",@"charset=UTF-8", nil];
-        //设置请求头
-//        [_sessionManager.requestSerializer setValue:@"fd0a97bd4bcb79b91c50b47c7fa8246d" forHTTPHeaderField:@"apikey"];
-        
-        _sessionManager.requestSerializer.timeoutInterval = 15.0;//超时间隔
+       //AFHTTPSessionManager 创建一个网络请求
+       _sessionManager = [[AFHTTPSessionManager manager] initWithBaseURL:baseUrl];
+       // Requests 请求Header参数
+       _sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+       _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
        
-        
-        [_sessionManager.requestSerializer setValue:KToken forHTTPHeaderField:@"token"];
-        
-        [_sessionManager.requestSerializer setValue:Kplatform forHTTPHeaderField:@"platform"];
-        [_sessionManager.requestSerializer setValue:kappVersion forHTTPHeaderField:@"appVersion"];
-        
+       _sessionManager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"text/html",@"application/json",@"text/javascript",@"text/json",@"text/plain",@"charset=UTF-8", nil];
+       
+       _sessionManager.requestSerializer.timeoutInterval = 15.0;//超时间隔
+       //Responses 响应Header参数
+//        [_sessionManager.requestSerializer setValue:KToken forHTTPHeaderField:@"token"];
+//
+//        [_sessionManager.requestSerializer setValue:Kplatform forHTTPHeaderField:@"platform"];
+//        [_sessionManager.requestSerializer setValue:kappVersion forHTTPHeaderField:@"appVersion"];
+//        
         
         //Responses 响应Header参数
         _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -67,37 +65,28 @@
     
     NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
     
-    
-    [_sessionManager.requestSerializer setValue:KToken forHTTPHeaderField:@"token"];
-    
-    [_sessionManager.requestSerializer setValue:Kplatform forHTTPHeaderField:@"platform"];
-    [_sessionManager.requestSerializer setValue:kappVersion forHTTPHeaderField:@"appVersion"];
-    
-    
-    
+    [self.sessionManager GET:url parameters:params headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 
-    [self.sessionManager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-        
+
         if (0 == code) {
             success(responseObject,code);
         } else {
             failure(nil, responseObject[@"msg"]);
         }
-        
+
         NSLog(@"请求路径:%@\n\t返回结果: %@", task.response.URL, responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSDictionary *dic = [error userInfo];
         failure(error, dic[@"NSLocalizedDescription"]);
-        
+
         NSHTTPURLResponse *response = (NSHTTPURLResponse*)task.response;
         //通讯协议状态码
         NSInteger statusCode = response.statusCode;
-        
+
         NSLog(@"请求路径: %@\n\t返回错误结果: %@\n错误码：%ld", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"],(long)statusCode);
-        
+
         if (statusCode==401) {
             //token过期
             [self logoutForTokenExpired:nil];
@@ -118,51 +107,45 @@
     NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
     
     
-    [_sessionManager.requestSerializer setValue:KToken forHTTPHeaderField:@"token"];
-    
-    [_sessionManager.requestSerializer setValue:Kplatform forHTTPHeaderField:@"platform"];
-    [_sessionManager.requestSerializer setValue:kappVersion forHTTPHeaderField:@"appVersion"];
-
-    
     if ([CommonUtils checkNet]) {
-        
-        [self.sessionManager POST:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-            
+
+        [self.sessionManager POST:url parameters:params headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-            
+
             if (0 == code) {
                 success(responseObject,code);
             }
               else {
                 failure(nil, responseObject[@"msg"]);
             }
-            
-            
+
+
             NSLog(@"请求路径:%@\n\t返回结果: %@", task.response.URL, responseObject);
-            
+
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
+
             NSDictionary *dic = [error userInfo];
             failure(error, dic[@"NSLocalizedDescription"]);
             NSHTTPURLResponse *response = (NSHTTPURLResponse*)task.response;
             //通讯协议状态码
             NSInteger statusCode = response.statusCode;
-            
+
             NSLog(@"请求路径: %@\n\t返回错误结果: %@\n错误码：%ld", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"],(long)statusCode);
-            
+
             if (statusCode==401) {
                 //token过期
                 [self logoutForTokenExpired:nil];
-      
+
             }
-            
-           
-            
+
+
+
         }];
     }
     else{
-        
+
         NSError *error;
         failure(error , @"服务器连接失败");
     }
@@ -186,8 +169,6 @@
             
             [YCLoginModelManager deleteInfo];
             
-            
-            
             KPostNotification(KNotificationLoginStateChange, @NO);
         }
         
@@ -198,133 +179,6 @@
     
 }
 
-//POST,设置body
-- (void)postRequestWithBodyUrl:(NSString *)url
-                        params:(id)params
-                       success:(SuccessBlock)success
-                       failure:(FailureBlock)failure
-{
-    
-    
-    NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
-    
-
-    NSString *requestURL=[HostName stringByAppendingString:url];
-    
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:requestURL parameters:nil error:nil];
-    
-    request.timeoutInterval= 10;
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:KToken forHTTPHeaderField:@"token"];
-    [request setValue:Kplatform forHTTPHeaderField:@"platform"];
-    [request setValue:kappVersion forHTTPHeaderField:@"appVersion"];
-    
-    NSData *body  =[params dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:body];
-
-    
-    
-    if ([CommonUtils checkNet]) {
-        
-        [[self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-            NSInteger responseStatusCode = [httpResponse statusCode];
-            
-            
-            if (responseStatusCode==401) {
-                //token过期
-                [self logoutForTokenExpired:nil];
-                return ;
-            }
-            
-            NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-
-            if (0 == code) {
-                success(responseObject,code);
-            }else if (code==3){
-                //token过期
-                [self logoutForTokenExpired:nil];
-            }  else {
-                failure(nil, responseObject[@"msg"]);
-            }
-            
-            NSLog(@"请求路径:%@\n\t返回结果: %@", response.URL, responseObject);
-            
-            
-        }]resume];
-        
-    }
-    else{
-        
-        NSError *error;
-        failure(error , @"服务器连接失败");
-    }
-    
-}
-
-
-
-//POST,设置body包含code
-- (void)postRequestWithBodyUrl:(NSString *)url
-                        params:(id)params
-                       success:(SuccessBlock)success
-                   failureCode:(FailureBlockCode)failure
-{
-    NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
-    
-    
-    NSString *requestURL=[HostName stringByAppendingString:url];
-    
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:requestURL parameters:nil error:nil];
-    
-    request.timeoutInterval= 10;
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:KToken forHTTPHeaderField:@"token"];
-    [request setValue:Kplatform forHTTPHeaderField:@"platform"];
-    [request setValue:kappVersion forHTTPHeaderField:@"appVersion"];
-    
-    NSData *body  =[params dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:body];
-    
-    
-    
-    if ([CommonUtils checkNet]) {
-        
-        [[self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-            NSInteger responseStatusCode = [httpResponse statusCode];
-            
-            
-            if (responseStatusCode==401) {
-                //token过期
-                [self logoutForTokenExpired:nil];
-                return ;
-            }
-            
-            NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-            
-            if (0 == code) {
-                success(responseObject,code);
-            }else if (code==3){
-                //token过期
-                [self logoutForTokenExpired:nil];
-            }  else {
-                failure(nil, responseObject[@"msg"],code);
-            }
-            
-            NSLog(@"请求路径:%@\n\t返回结果: %@", response.URL, responseObject);
-            
-            
-        }]resume];
-        
-    }
-    else{
-        
-        NSError *error;
-       
-        failure(error , @"服务器连接失败",10001);
-    }
-}
 
 
 
@@ -339,10 +193,10 @@
     NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
     
     if ([CommonUtils checkNet]) {
-        
-        [self.sessionManager PUT:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+        [self.sessionManager PUT:url parameters:params headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-            
+
             if (0 == code) {
                 success(responseObject,code);
             }else if (code==3){
@@ -351,12 +205,12 @@
             }  else {
                 failure(nil, responseObject[@"msg"]);
             }
-            
+
             NSLog(@"请求路径:%@\n\t返回结果: %@", task.response.URL, responseObject);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSDictionary *dic = [error userInfo];
             failure(error, dic[@"NSLocalizedDescription"]);
-            
+
             NSLog(@"请求路径: %@\n\t返回错误结果: %@", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"]);
         }];
     }
@@ -378,9 +232,9 @@
     NSLog(@"请求路径: %@ \n\t请求参数: %@", url, params?:@"nil");
     
     
-    [self.sessionManager PATCH:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.sessionManager PATCH:url parameters:params headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-        
+
         if (0 == code) {
             success(responseObject,code);
         }else if (code==3){
@@ -389,12 +243,12 @@
         }  else {
             failure(nil, responseObject[@"msg"]);
         }
-        
+
         NSLog(@"请求路径:%@\n\t返回结果: %@", task.response.URL, responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSDictionary *dic = [error userInfo];
         failure(error, dic[@"NSLocalizedDescription"]);
-        
+
         NSLog(@"请求路径: %@\n\t返回错误结果: %@", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"]);
     }];
 }
@@ -405,9 +259,9 @@
                      success:(SuccessBlock)success
                      failure:(FailureBlock)failure  {
     
-    [self.sessionManager DELETE:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.sessionManager DELETE:url parameters:params headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-        
+
         if (0 == code) {
             success(responseObject,code);
         }else if (code==3){
@@ -416,12 +270,12 @@
         }  else {
             failure(nil, responseObject[@"msg"]);
         }
-        
+
         NSLog(@"请求路径:%@\n\t返回结果: %@", task.response.URL, responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSDictionary *dic = [error userInfo];
         failure(error, dic[@"NSLocalizedDescription"]);
-        
+
         NSLog(@"请求路径: %@\n\t返回错误结果: %@", dic[@"NSErrorFailingURLKey"], dic[@"NSLocalizedDescription"]);
     }];
 }

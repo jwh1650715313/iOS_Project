@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "904F4F27FD314010A3812EB2A9306183"
+               BlueprintIdentifier = "FBA456CB50E371584C11231929A0971E"
+               BuildableName = "libIQKeyboardManager.a"
                BlueprintName = "IQKeyboardManager"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libIQKeyboardManager.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
